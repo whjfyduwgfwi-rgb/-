@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة مذاكرة – الدرس 1-1: تاريخ تكنولوجيا المعلومات (IT)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#eef3f7; --surface:#ffffff; --surface2:#e6edf3; --text:#14273b; --muted:#56687a; --border:#d3dde7;
+  --primary:#0e7c86; --primary-d:#0a5b63; --primary-soft:#d6eef0; --on-primary:#ffffff; --ink:#16324f;
+  --amber:#f2b632; --amber-soft:#fdf0cf; --amber-ink:#7a5600;
+  --good:#237a57; --good-soft:#d9f1e5; --bad:#c4423a; --bad-soft:#fae2df;
+  --c-intro:#5b6b7f; --c-stages:#0e7c86; --c-moore:#4a5fc1; --c-social:#b7791f;
+  --hero-a:#16324f; --hero-b:#0e5c6b;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1a26; --surface:#172536; --surface2:#1f3146; --text:#e6eef6; --muted:#9db0c3; --border:#2b4058;
+    --primary:#2fb0bc; --primary-d:#7bd8e0; --primary-soft:#173a44; --on-primary:#06282c; --ink:#dbe8f5;
+    --amber:#f2b632; --amber-soft:#3a3016; --amber-ink:#f5cf7a;
+    --good:#4cc38f; --good-soft:#15392c; --bad:#ef7c73; --bad-soft:#41211f;
+    --c-intro:#9db0c3; --c-stages:#43c1cc; --c-moore:#8fa0ff; --c-social:#f2b632;
+    --hero-a:#0b2236; --hero-b:#0f4a57;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1a26; --surface:#172536; --surface2:#1f3146; --text:#e6eef6; --muted:#9db0c3; --border:#2b4058;
+  --primary:#2fb0bc; --primary-d:#7bd8e0; --primary-soft:#173a44; --on-primary:#06282c; --ink:#dbe8f5;
+  --amber:#f2b632; --amber-soft:#3a3016; --amber-ink:#f5cf7a;
+  --good:#4cc38f; --good-soft:#15392c; --bad:#ef7c73; --bad-soft:#41211f;
+  --c-intro:#9db0c3; --c-stages:#43c1cc; --c-moore:#8fa0ff; --c-social:#f2b632;
+  --hero-a:#0b2236; --hero-b:#0f4a57;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif;font-size:16px;line-height:1.85;-webkit-text-size-adjust:100%}
+body.noscroll{overflow:hidden}
+h1,h2,h3,h4{line-height:1.5;margin:0 0 .4em;font-weight:700}
+h1{font-size:clamp(1.55rem,4.2vw,2.35rem);line-height:1.4}
+h2{font-size:1.5rem}
+h3{font-size:1.15rem}
+h4{font-size:1.02rem}
+p{margin:0 0 .7em}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+svg.ic{flex:none;vertical-align:middle}
+.muted{color:var(--muted)}
+.hide{display:none!important}
+
+/* الهيكل */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--border)}
+.top-in{max-width:1080px;margin:0 auto;padding:10px 16px 6px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;color:inherit;cursor:pointer;padding:0;text-align:start}
+.brand svg{color:var(--primary)}
+.brand b{display:block;font-size:1rem;line-height:1.3}
+.brand small{display:block;color:var(--muted);font-size:.78rem;line-height:1.2}
+.mini-p{margin-inline-start:auto;display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);white-space:nowrap}
+.mini-p .progress{width:70px;height:8px}
+.top-s{flex:1;max-width:300px}
+.tabs{max-width:1080px;margin:0 auto;padding:4px 16px 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:6px 14px;border-radius:99px;cursor:pointer;font-size:.92rem;font-weight:500;line-height:1.6}
+.tab.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 70px}
+.page-h{margin-bottom:14px}
+.page-h p{margin:0}
+
+/* عناصر عامة */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.card h3{margin-bottom:.5em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-weight:600;font-size:.95rem;cursor:pointer;line-height:1.5;min-height:44px}
+.btn:hover:not(:disabled){border-color:var(--primary)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.btn.primary:hover:not(:disabled){background:var(--primary-d);border-color:var(--primary-d);color:var(--on-primary)}
+.btn.good{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.btn.bad{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:5px 12px;min-height:36px;font-size:.88rem}
+.btn.big{padding:12px 24px;font-size:1.05rem}
+.link{background:none;border:0;color:var(--primary);cursor:pointer;font-weight:600;padding:4px 0;display:inline-flex;align-items:center;gap:6px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.row.sb{justify-content:space-between}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 12px;border-radius:99px;font-size:.82rem;font-weight:600;background:var(--surface2);color:var(--text);line-height:1.7}
+.badge.sec{background:transparent;border:1.5px solid var(--sc);color:var(--sc)}
+.badge.on-dark{background:rgba(255,255,255,.16);color:#fff}
+.badge.en{font-family:"IBM Plex Sans Arabic",sans-serif;direction:ltr}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.chip{border:1.5px solid var(--border);background:var(--surface);color:var(--text);padding:4px 14px;border-radius:99px;cursor:pointer;font-size:.9rem;font-weight:500;line-height:1.7}
+.chip.on{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.chip.term{border-color:var(--sc,var(--primary));color:var(--sc,var(--primary));background:transparent;direction:ltr}
+.progress{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.progress>i{display:block;height:100%;background:var(--primary);border-radius:99px;transition:width .4s}
+.callout{border-inline-start:5px solid var(--sc,var(--primary));background:var(--surface);border-radius:12px;padding:14px 18px;margin-bottom:14px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
+.callout h3{color:var(--sc,var(--primary));margin-bottom:.3em}
+.callout p:last-child{margin-bottom:0}
+.key{background:var(--amber-soft);color:var(--text);border:1.5px dashed var(--amber);border-radius:12px;padding:12px 16px;margin:14px 0;display:flex;gap:10px;align-items:flex-start}
+.key svg{color:var(--amber-ink);margin-top:6px}
+.key b{color:var(--amber-ink)}
+.warn{background:var(--bad-soft);border:1.5px solid var(--bad);border-radius:12px;padding:12px 16px;margin:14px 0}
+.empty{text-align:center;padding:30px 10px;color:var(--muted);border:2px dashed var(--border);border-radius:14px}
+.searchbox{display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:0 12px;min-height:44px;color:var(--muted)}
+.searchbox:focus-within{border-color:var(--primary)}
+.searchbox input{flex:1;border:0;background:transparent;color:var(--text);font:inherit;font-size:.95rem;min-width:0;outline:none;padding:8px 0}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.toolbar .searchbox{flex:1;min-width:200px}
+.toast{position:fixed;inset-inline:0;bottom:calc(22px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90%;background:var(--ink);color:var(--surface);padding:8px 20px;border-radius:99px;font-weight:600;z-index:80;opacity:0;pointer-events:none;transition:opacity .25s;text-align:center}
+.toast.on{opacity:1}
+
+/* الرئيسية */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;border-radius:20px;padding:26px 28px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:center;margin-bottom:14px}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding:20px}}
+.hero h1{margin:.4em 0 .3em}
+.hero p{color:rgba(255,255,255,.88);max-width:34em}
+.hp{margin-top:16px}
+.hp .pl{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;margin-bottom:6px}
+.hp .pl b{font-size:1.5rem}
+.hero .progress{background:rgba(255,255,255,.2);height:12px}
+.hero .progress>i{background:var(--amber)}
+.hp small{color:rgba(255,255,255,.75)}
+.hero .btn{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.4);margin-top:14px}
+.hero .btn:hover{background:rgba(255,255,255,.24);border-color:#fff}
+.ruler{width:100%;height:auto;color:rgba(255,255,255,.9)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:780px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px}
+.stat b{display:block;font-size:1.8rem;line-height:1.3;color:var(--sc,var(--ink))}
+.stat span{color:var(--muted);font-size:.9rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:14px}
+.tile{display:flex;gap:14px;align-items:center;text-align:start;background:var(--surface);color:var(--text);border:1px solid var(--border);border-inline-start:6px solid var(--sc,var(--primary));border-radius:14px;padding:14px 16px;cursor:pointer;min-height:76px;width:100%}
+.tile:hover{background:var(--surface2)}
+.tile b{display:block;font-size:1.05rem;line-height:1.5}
+.tile small{color:var(--muted);line-height:1.5;display:block}
+.tile-ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--surface2);color:var(--sc,var(--primary));display:grid;place-items:center}
+.tile.main{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.tile.main small{color:inherit;opacity:.85}
+.tile.main .tile-ic{background:rgba(255,255,255,.2);color:inherit}
+.tile.main:hover{background:var(--primary-d)}
+
+/* الدراسة */
+.mapgroup{margin-bottom:18px}
+.mapgroup>h3{display:flex;align-items:center;gap:8px;color:var(--sc);margin-bottom:.6em}
+.mapitem{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:var(--surface);color:var(--text);border:1px solid var(--border);border-inline-start:5px solid var(--sc);border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer}
+.mapitem:hover{background:var(--surface2)}
+.mapitem>span:nth-child(2){flex:1}
+.mapitem b{display:block;line-height:1.5}
+.mapitem small{color:var(--muted);line-height:1.5}
+.mi-ck{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--border);display:grid;place-items:center;color:var(--on-primary)}
+.mapitem.done .mi-ck{background:var(--good);border-color:var(--good)}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;inset-block:22px;inset-inline-start:17px;width:3px;background:var(--border);border-radius:2px}
+.tl li{position:relative;padding-inline-start:54px;margin-bottom:10px}
+.tl .dot{position:absolute;inset-inline-start:0;top:10px;width:38px;height:38px;border-radius:50%;background:var(--surface);border:3px solid var(--c-stages);display:grid;place-items:center;font-weight:700;color:var(--c-stages);z-index:1}
+.tl li.done .dot{background:var(--c-stages);color:var(--on-primary)}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px}
+.tl-main{display:block;width:100%;text-align:start;background:none;border:0;color:inherit;cursor:pointer;padding:0;margin-bottom:6px}
+.tl-main small{display:block;color:var(--c-stages);font-weight:600;line-height:1.5}
+.tl-main b{display:block;line-height:1.6}
+.tl-card .chips{margin:0}
+.crumb{margin-bottom:8px}
+.unit-h{border-inline-start:6px solid var(--sc);padding-inline-start:14px;margin-bottom:16px}
+.unit-h h2{margin:.3em 0 .1em}
+.unit-h p{margin:0}
+.unit-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:22px}
+.mtl{display:flex;align-items:center;margin:0 0 16px;overflow-x:auto;padding-bottom:4px}
+.mtl-i{flex:none;background:none;border:0;color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 4px;min-width:66px}
+.mtl-i .dot{width:32px;height:32px;border-radius:50%;border:3px solid var(--border);background:var(--surface);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--muted)}
+.mtl-i small{font-size:.75rem;line-height:1.4}
+.mtl-i.done .dot{border-color:var(--c-stages);color:var(--c-stages)}
+.mtl-i.on .dot{background:var(--c-stages);border-color:var(--c-stages);color:var(--on-primary)}
+.mtl-i.on{color:var(--text);font-weight:700}
+.mtl-l{flex:1;min-width:12px;height:3px;background:var(--border);margin-bottom:18px}
+.facts{display:grid;gap:10px;margin:0 0 14px}
+.fact{display:grid;grid-template-columns:170px 1fr;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
+@media(max-width:640px){.fact{grid-template-columns:1fr;gap:2px}}
+.fact dt{font-weight:700;color:var(--sc,var(--primary))}
+.fact dd{margin:0}
+.tcard{background:var(--surface);border:1px solid var(--border);border-inline-start:5px solid var(--sc,var(--primary));border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.tcard header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.tcard header h4{margin:0}
+.tcard .en{color:var(--muted);direction:ltr;font-weight:500}
+.tcard dl{margin:0;display:grid;gap:6px}
+.tcard dt{font-weight:700;font-size:.88rem;color:var(--sc,var(--primary));line-height:1.6}
+.tcard dd{margin:0 0 4px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 4px}
+.flow .node{background:var(--surface2);border-radius:10px;padding:6px 14px;font-weight:600;font-size:.92rem}
+.flow .node.bad{background:var(--bad-soft);color:var(--bad)}
+.flow .arr{color:var(--muted)}
+.bars{display:flex;align-items:flex-end;gap:12px;height:170px;padding:6px 4px 0;margin-top:8px}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
+.bar{width:100%;max-width:64px;background:var(--c-moore);border-radius:8px 8px 3px 3px;opacity:.9}
+.bcol b{font-size:.95rem}
+.bcol small{color:var(--muted);text-align:center;line-height:1.4;font-size:.78rem}
+.shrink{display:flex;align-items:flex-end;justify-content:center;gap:24px;margin:14px 0 6px;flex-wrap:wrap}
+.shrink div{border:3px solid var(--primary);border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.78rem;color:var(--primary);text-align:center;line-height:1.3}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.vs{grid-template-columns:1fr}}
+.vs>div{border-radius:12px;padding:12px 16px;border:1.5px solid var(--border)}
+.vs .no{background:var(--bad-soft);border-color:var(--bad)}
+.vs .yes{background:var(--good-soft);border-color:var(--good)}
+.scard{background:var(--surface);border:1px solid var(--border);border-inline-start:5px solid var(--c-social);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.sc-h{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:none;border:0;color:inherit;cursor:pointer;padding:12px 16px}
+.sc-h span.t{flex:1}
+.sc-h b{display:block;line-height:1.5}
+.sc-h small{color:var(--muted);direction:ltr;display:block;text-align:start;line-height:1.5}
+.sc-h svg.chev{transition:transform .2s;color:var(--muted)}
+.scard.open .sc-h svg.chev{transform:rotate(-90deg)}
+.sc-b{display:none;padding:0 16px 14px}
+.scard.open .sc-b{display:block}
+.sc-b dl{margin:0;display:grid;gap:4px}
+.sc-b dt{font-weight:700;font-size:.88rem;color:var(--c-social);line-height:1.6}
+.sc-b dd{margin:0 0 6px}
+
+/* المصطلحات */
+.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.gcard{position:relative;text-align:start;background:var(--surface);color:var(--text);border:1px solid var(--border);border-top:4px solid var(--sc);border-radius:12px;padding:12px 14px;cursor:pointer;display:block;width:100%}
+.gcard:hover{background:var(--surface2)}
+.gcard b{display:block;line-height:1.5;padding-inline-end:30px}
+.gcard .en{display:block;color:var(--muted);direction:ltr;text-align:start;font-size:.9rem;line-height:1.5}
+.gcard .ab{display:inline-block;margin-top:4px;font-size:.78rem;background:var(--surface2);border-radius:6px;padding:0 8px;direction:ltr}
+.gcard .fav{position:absolute;top:8px;inset-inline-end:8px}
+.fav{background:none;border:0;cursor:pointer;color:var(--muted);padding:4px;border-radius:8px;display:inline-grid;place-items:center;min-width:34px;min-height:34px}
+.fav.on{color:var(--amber)}
+.fav.on svg{fill:currentColor}
+.ovl{position:fixed;inset:0;background:rgba(8,18,28,.6);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));z-index:60}
+.mdl{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:18px;max-width:620px;width:100%;max-height:100%;overflow:auto;padding:20px 22px;outline:none}
+.mdl-h{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.mdl-h>div{flex:1}
+.mdl-h h3{margin:0;font-size:1.3rem}
+.mdl-h .en{color:var(--muted);direction:ltr;text-align:start}
+.mdl dl{margin:0;display:grid;gap:4px}
+.mdl dt{font-weight:700;font-size:.9rem;color:var(--sc,var(--primary))}
+.mdl dd{margin:0 0 8px}
+.mdl-f{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+
+/* الأسئلة */
+.tabs2{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.qcard{display:flex;gap:14px;background:var(--surface);border:1px solid var(--border);border-inline-start:5px solid var(--sc,var(--primary));border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.qn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--surface2);display:grid;place-items:center;font-weight:700;font-size:.85rem;color:var(--muted)}
+.qb{flex:1;min-width:0}
+.qb .q{font-weight:600;margin-bottom:8px}
+.ans{background:var(--surface2);border-radius:10px;padding:10px 14px;margin:10px 0 0}
+.ans p{margin:0 0 4px}
+.ans.ok{background:var(--good-soft)}
+.ans.no{background:var(--bad-soft)}
+.ans .verdict{font-weight:700}
+.ans.ok .verdict{color:var(--good)}
+.ans.no .verdict{color:var(--bad)}
+.opts{display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:var(--surface);color:var(--text);border:2px solid var(--border);border-radius:12px;padding:10px 14px;cursor:pointer;min-height:50px;font-size:.98rem;line-height:1.6}
+.opt:hover:not(:disabled){border-color:var(--primary)}
+.opt:disabled{cursor:default;color:var(--text)}
+.opt .ol{flex:none;width:30px;height:30px;border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.opt>span:not(.ol){flex:1}
+.opt.sel{border-color:var(--primary);background:var(--primary-soft)}
+.opt.correct{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.correct svg{color:var(--good)}
+.opt.wrong svg{color:var(--bad)}
+.opts.two .opt{justify-content:center;font-weight:700}
+.opts.two .opt>span:not(.ol){flex:none}
+
+/* الاختبار */
+.qz-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.qtxt{font-size:1.15rem;font-weight:600;line-height:1.85;margin:14px 0 16px}
+.fb{border-radius:12px;padding:12px 16px;margin-top:14px}
+.fb.ok{background:var(--good-soft);border:1.5px solid var(--good)}
+.fb.no{background:var(--bad-soft);border:1.5px solid var(--bad)}
+.fb b{display:block}
+.fb.ok b{color:var(--good)}
+.fb.no b{color:var(--bad)}
+.fb p{margin:4px 0 0}
+.qdots{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0}
+.qdot{width:36px;height:36px;border-radius:9px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-weight:600;font-size:.85rem}
+.qdot.dn{background:var(--primary-soft);border-color:var(--primary);margin:0;padding:0}
+.qdot.cur{outline:3px solid var(--amber);outline-offset:1px}
+.setup h3{margin-top:14px}
+.res-top{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+@media(max-width:560px){.res-top{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.ring{width:140px;height:140px}
+.ring-bg{fill:none;stroke:var(--surface2);stroke-width:12}
+.ring-fg{fill:none;stroke:var(--primary);stroke-width:12;stroke-linecap:round}
+.ring text{fill:var(--text);font-weight:700;font-size:26px;font-family:inherit}
+.rstats{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.rstat{background:var(--surface2);border-radius:10px;padding:6px 14px;font-weight:600;font-size:.92rem}
+.rstat.g{background:var(--good-soft);color:var(--good)}
+.rstat.b{background:var(--bad-soft);color:var(--bad)}
+.weak{display:grid;grid-template-columns:200px 1fr auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.weak:last-child{border-bottom:0}
+@media(max-width:640px){.weak{grid-template-columns:1fr;gap:4px}}
+.weak .progress.bad>i{background:var(--bad)}
+.weak .progress.good>i{background:var(--good)}
+.st{font-size:.82rem;font-weight:700;padding:1px 10px;border-radius:99px;white-space:nowrap}
+.st.b{background:var(--bad-soft);color:var(--bad)}
+.st.g{background:var(--good-soft);color:var(--good)}
+.rq{border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:10px;background:var(--surface)}
+.rq.no{border-inline-start:5px solid var(--bad)}
+.rq.ok{border-inline-start:5px solid var(--good)}
+.rq .q{font-weight:600;margin:4px 0 6px}
+.rq .yours{color:var(--bad)}
+.rq .right{color:var(--good)}
+.rq p{margin:0 0 3px}
+details.qd{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:8px}
+details.qd summary{cursor:pointer;padding:10px 14px;font-weight:600}
+details.qd .ans{margin:0 14px 12px}
+details.grp>summary{cursor:pointer;font-weight:700;padding:8px 0}
+
+/* المقارنات */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+table.cmp{width:100%;min-width:560px;border-collapse:separate;border-spacing:0}
+table.cmp th,table.cmp td{padding:10px 14px;text-align:start;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7}
+table.cmp thead th{background:var(--ink);color:var(--surface);font-weight:700}
+table.cmp tbody th{background:var(--surface2);width:22%;font-weight:700}
+table.cmp tbody tr:last-child th,table.cmp tbody tr:last-child td{border-bottom:0}
+table.cmp td+td,table.cmp th+th,table.cmp th+td{border-inline-start:1px solid var(--border)}
+.blur td.v .cell{filter:blur(7px);cursor:pointer;user-select:none;transition:filter .2s}
+.blur td.v.rv .cell{filter:none}
+.cmp-h{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:20px 0 8px}
+.cmp-h h3{margin:0}
+
+/* المراجعة */
+.qr-g{border-inline-start:5px solid var(--sc);background:var(--surface);border:1px solid var(--border);border-inline-start:5px solid var(--sc);border-radius:12px;padding:12px 16px;margin-bottom:12px}
+.qr-g h3{color:var(--sc);margin-bottom:.3em}
+.qr-g ul{margin:0;padding-inline-start:22px}
+.qr-g li{margin-bottom:4px}
+.flash{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:250px;width:100%;text-align:center;padding:24px;border-radius:18px;border:2px solid var(--sc,var(--border));background:var(--surface);color:var(--text);cursor:pointer}
+.flash .big{font-size:1.6rem;font-weight:700}
+.flash .en{direction:ltr;color:var(--muted);font-size:1.1rem}
+.flash .hint{color:var(--muted);font-size:.85rem}
+.flash.back{background:var(--primary-soft)}
+.flash.back .key-t{color:var(--amber-ink);font-weight:700;background:var(--amber-soft);border-radius:10px;padding:6px 12px}
+.fc-c{margin:10px 0;text-align:center;color:var(--muted)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(max-width:560px){
+  .top-in{flex-wrap:wrap}
+  .top-s{order:3;max-width:none;flex-basis:100%}
+  .mini-p{margin-inline-start:auto}
+  .card{padding:14px}
+  .hero{padding:18px}
+}
+
+/* التذييل */
+.foot{border-top:1px solid var(--border);background:var(--surface)}
+.foot-in{max-width:1080px;margin:0 auto;padding:16px 16px 22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+.foot-credit{display:flex;flex-direction:column;line-height:1.6}
+.foot-credit small{color:var(--muted)}
+.foot-credit b{font-size:1.1rem;color:var(--ink)}
+.foot-credit .en{color:var(--muted);font-size:.9rem;text-align:start}
+.foot-note{display:inline-flex;align-items:center;gap:8px;background:var(--amber-soft);color:var(--amber-ink);border:1.5px dashed var(--amber);border-radius:12px;padding:8px 14px;font-weight:600;font-size:.92rem}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="brand" data-go="home" aria-label="الرئيسية">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="28" height="28" rx="4"/><rect x="10" y="10" width="14" height="14" rx="3"/><rect x="15" y="15" width="4" height="4" rx="1" fill="currentColor"/></svg>
+      <span><b>منصة مذاكرة IT</b><small>الدرس 1-1 • تاريخ تكنولوجيا المعلومات</small></span>
+    </button>
+    <label class="searchbox top-s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="gs" type="search" data-input="gs" placeholder="ابحث في المصطلحات والأسئلة" aria-label="بحث عام"></label>
+    <div class="mini-p" id="minip" title="نسبة الإنجاز"></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="التنقل"></nav>
+</header>
+<main class="wrap" id="main"></main>
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-credit">
+      <small>صُمم بواسطة أخوك المطور</small>
+      <b>أحمد م. فتح الله</b>
+      <span class="en" dir="ltr">Ahmed M. Fathallah</span>
+    </div>
+    <div class="foot-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg><span>دي لسه البداية.. استنوا الجاي أحلى بكتير</span></div>
+  </div>
+</footer>
+<div id="modal"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+
+/* =====================================================================
+   بيانات الدرس 1-1: تاريخ تكنولوجيا المعلومات (IT)
+   كل محتوى الموقع يخرج من هذا الملف. عدّل النصوص هنا فقط.
+   الأقسام (sec / s): intro | stages | moore | social
+   ===================================================================== */
+
+const SEC = {
+  intro: "مقدمة الدرس",
+  stages: "المراحل التاريخية",
+  moore: "قانون مور",
+  social: "التغيرات الاجتماعية والاقتصادية"
+};
+const TYPES = { mcq: "اختيار من متعدد", tf: "صح وخطأ", term: "مصطلحات", illa: "علل", cmp: "مقارنات" };
+
+/* ---------- وحدات المذاكرة ---------- */
+const UNITS = [
+  { id: "intro", sec: "intro", title: "مقدمة الدرس", sub: "السؤال الرئيسي، والتغيير، والفكرة الأساسية" },
+  { id: "st1", sec: "stages", title: "المرحلة الأولى: الحواسيب الضخمة", sub: "الأربعينيات – الستينيات" },
+  { id: "st2", sec: "stages", title: "المرحلة الثانية: الحواسب الشخصية", sub: "السبعينيات – الثمانينيات" },
+  { id: "st3", sec: "stages", title: "المرحلة الثالثة: الإنترنت والويب", sub: "التسعينيات" },
+  { id: "st4", sec: "stages", title: "المرحلة الرابعة: الهواتف الذكية", sub: "2000 – 2009" },
+  { id: "st5", sec: "stages", title: "المرحلة الخامسة: السحابة والبيانات والذكاء الاصطناعي", sub: "2010 فصاعدًا" },
+  { id: "moore1", sec: "moore", title: "ما هو قانون مور؟", sub: "التعريف وأهميته وحقيقته" },
+  { id: "moore2", sec: "moore", title: "تحديات تصغير المكونات", sub: "Leakage Currents • Quantum Effects • Quantum Tunneling" },
+  { id: "moore3", sec: "moore", title: "الحلول الحديثة لتحسين الأداء", sub: "Multi-core • Parallel Processing • التصميمات المتخصصة • Quantum Computing" },
+  { id: "social", sec: "social", title: "التغيرات الاجتماعية والاقتصادية", sub: "SNS • E-commerce • Remote Work • Online Learning • Cashless Payment" }
+];
+
+/* ---------- المصطلحات ---------- */
+const TERMS = [
+  { id: "it", ar: "تكنولوجيا المعلومات", en: "Information Technology", ab: "IT", sec: "intro", unit: "intro",
+    def: "استخدام الحواسيب والأجهزة والشبكات لتخزين المعلومات ومعالجتها ونقلها.",
+    simple: "كل التقنيات التي تساعدنا على التعامل مع المعلومات: نحفظها، ونعالجها، ونرسلها للآخرين.",
+    ex: "إرسال رسالة أو البحث عن معلومة باستخدام الهاتف أو الحاسب.",
+    key: "الدرس يحكي قصة تطور IT عبر خمس مراحل تاريخية." },
+  { id: "change", ar: "التغيير", en: "Change", ab: "", sec: "intro", unit: "intro",
+    def: "المفهوم المحوري في الدرس: تقنيات المعلومات لا تتوقف عن التطور، وكل مرحلة تغيّر شكل الأجهزة وطريقة حياة الناس.",
+    simple: "التقنية لا تبقى كما هي؛ تتطور دائمًا فتتغير حياتنا معها.",
+    ex: "انتقال الحاسوب من جهاز ضخم يملأ غرفة إلى هاتف ذكي يحمله الإنسان معه.",
+    key: "المفهوم المحوري للدرس = التغيير." },
+
+  { id: "eniac", ar: "الحاسوب إنياك", en: "ENIAC", ab: "ENIAC", sec: "stages", unit: "st1",
+    def: "من أوائل الحواسيب الإلكترونية الضخمة، ويمثل المرحلة الأولى من تطور تكنولوجيا المعلومات (الأربعينيات – الستينيات).",
+    simple: "حاسوب عملاق الحجم يملأ غرفة كاملة، ويعمل بالصمامات المفرغة.",
+    ex: "لو أردت وضع الحاسوب الأول في بيتك، فستحتاج غرفة كاملة له.",
+    key: "ENIAC = المرحلة الأولى + الصمامات المفرغة + حجم ضخم." },
+  { id: "vacuum", ar: "الصمامات المفرغة", en: "Vacuum Tubes", ab: "", sec: "stages", unit: "st1",
+    def: "مكونات إلكترونية استُخدمت في الحواسيب الأولى، وكانت كبيرة الحجم.",
+    simple: "قطع إلكترونية تشبه المصابيح الصغيرة؛ وجود أعداد كبيرة منها داخل الحاسوب جعله ضخمًا.",
+    ex: "الحاسوب ENIAC كان يعمل بالصمامات المفرغة.",
+    key: "الصمامات المفرغة = تقنية المرحلة الأولى." },
+  { id: "pc", ar: "الحواسب الشخصية", en: "Personal Computers", ab: "PCs", sec: "stages", unit: "st2",
+    def: "حواسب أصغر حجمًا من الحواسيب الأولى ومخصصة للاستخدام الفردي، ظهرت في السبعينيات والثمانينيات.",
+    simple: "حاسب يستطيع كل شخص استخدامه بنفسه في بيته أو عمله، بعد أن كانت الحواسيب للمؤسسات الكبيرة.",
+    ex: "حاسب مكتبي يستخدمه شخص واحد في المنزل أو المكتب.",
+    key: "PCs = المرحلة الثانية = الحاسب أصبح في متناول الأفراد." },
+  { id: "cominet", ar: "الإنترنت للاستخدام التجاري", en: "Commercial Internet", ab: "", sec: "stages", unit: "st3",
+    def: "بدء استخدام الإنترنت تجاريًا في التسعينيات، فأصبح متاحًا لعدد أكبر من الناس والشركات.",
+    simple: "الإنترنت خرج من نطاق ضيق وصار متاحًا للشركات والناس.",
+    ex: "شركة تنشئ موقعًا على الإنترنت لتعرض خدماتها على الناس.",
+    key: "الإنترنت تجاريًا = التسعينيات = وصول عالمي للمعلومات." },
+  { id: "web", ar: "الشبكة العنكبوتية العالمية", en: "World Wide Web", ab: "Web / WWW", sec: "stages", unit: "st3",
+    def: "مجموعة الصفحات والمواقع التي نتصفحها عبر الإنترنت.",
+    simple: "الإنترنت هو الشبكة التي تنتقل عليها البيانات، والويب هو المواقع والصفحات التي نفتحها عليها.",
+    ex: "فتح موقع إخباري أو موقع تعليمي من المتصفح.",
+    key: "الويب خدمة تعمل فوق الإنترنت، وليست هي الإنترنت نفسه." },
+  { id: "email", ar: "البريد الإلكتروني", en: "Email", ab: "E-mail", sec: "stages", unit: "st3",
+    def: "إرسال الرسائل واستقبالها عبر الإنترنت.",
+    simple: "رسالة تصل بسرعة إلى أي شخص في أي مكان في العالم.",
+    ex: "إرسال ملف أو رسالة إلى صديق أو معلم عبر عنوان بريده.",
+    key: "البريد الإلكتروني = تواصل سريع بين الناس حول العالم." },
+  { id: "smart", ar: "الهواتف الذكية", en: "Smartphones", ab: "", sec: "stages", unit: "st4",
+    def: "هواتف يمكنها الاتصال بالإنترنت وتشغيل التطبيقات، وقد ظهرت في الفترة 2000 – 2009.",
+    simple: "هاتف يشبه حاسبًا صغيرًا في يدك، يوصلك بالإنترنت أينما كنت.",
+    ex: "تصفح الإنترنت أو إرسال رسالة من الهاتف وأنت خارج المنزل.",
+    key: "الهواتف الذكية = الإنترنت في كل وقت وفي أي مكان." },
+  { id: "cloud", ar: "الحوسبة السحابية", en: "Cloud Computing", ab: "", sec: "stages", unit: "st5",
+    def: "استخدام خدمات التخزين والمعالجة عبر الإنترنت بدلًا من الاعتماد على جهاز واحد فقط.",
+    simple: "بدل أن تحفظ ملفاتك على جهازك فقط، تُحفظ على الإنترنت وتفتحها من أي جهاز.",
+    ex: "حفظ صورك أو ملفاتك على الإنترنت لتفتحها من الهاتف أو الحاسب.",
+    key: "الحوسبة السحابية من مصطلحات المرحلة الخامسة (2010 فصاعدًا)." },
+  { id: "bigdata", ar: "البيانات الضخمة", en: "Big Data", ab: "", sec: "stages", unit: "st5",
+    def: "كميات هائلة جدًا من البيانات يصعب التعامل معها بالطرق العادية.",
+    simple: "بيانات كثيرة جدًا ومتنوعة، تحتاج إلى تقنيات خاصة لتخزينها وتحليلها.",
+    ex: "ما يفعله ملايين المستخدمين يوميًا على الإنترنت من بحث ونشر وشراء.",
+    key: "Big Data = البيانات الضخمة = المرحلة الخامسة." },
+  { id: "ai", ar: "الذكاء الاصطناعي", en: "Artificial Intelligence", ab: "AI", sec: "stages", unit: "st5",
+    def: "قدرة الحاسب أو البرامج على أداء مهام تحتاج عادةً إلى ذكاء الإنسان، مثل التعلم واتخاذ القرار.",
+    simple: "برامج تتعلم وتساعدنا في حل المشكلات بطريقة تشبه تفكير الإنسان إلى حد ما.",
+    ex: "برنامج يجيب عن أسئلتك أو يقترح عليك ما يناسبك.",
+    key: "AI = الذكاء الاصطناعي = المرحلة الخامسة." },
+
+  { id: "moore", ar: "قانون مور", en: "Moore's Law", ab: "", sec: "moore", unit: "moore1",
+    def: "ملاحظة تنص على أن عدد الترانزستورات في الشريحة يتضاعف تقريبًا كل عامين.",
+    simple: "كل عامين تقريبًا يصبح عدد المكونات الصغيرة داخل الشريحة ضعف ما كان، فتصبح الحواسيب أقوى وأصغر.",
+    ex: "لو كان في الشريحة 100 ترانزستور فبعد عامين تقريبًا يصبح نحو 200 (مثال للتوضيح فقط).",
+    key: "يتضاعف تقريبًا كل عامين، وهو ملاحظة تجريبية وليس قانونًا فيزيائيًا ثابتًا." },
+  { id: "transistor", ar: "الترانزستور", en: "Transistor", ab: "", sec: "moore", unit: "moore1",
+    def: "مكوّن إلكتروني صغير جدًا داخل الشريحة (المعالج)، وزيادة عدده تزيد قدرة الحاسب.",
+    simple: "يشبه مفتاحًا صغيرًا جدًا داخل المعالج؛ كلما زاد عدد هذه المفاتيح زادت قدرة الحاسب.",
+    ex: "المعالج الحديث يحتوي على عدد ضخم من الترانزستورات في مساحة صغيرة.",
+    key: "عدد الترانزستورات هو محور قانون مور." },
+  { id: "empirical", ar: "الملاحظة التجريبية", en: "Empirical Observation", ab: "", sec: "moore", unit: "moore1",
+    def: "نتيجة يلاحظها الناس من الواقع والتجربة، وليست قانونًا فيزيائيًا ثابتًا يصح دائمًا.",
+    simple: "يعني أن العلماء لاحظوا الأمر يحدث فعلًا عبر السنين، لكن هذا لا يضمن استمراره إلى الأبد.",
+    ex: "قانون مور: لوحظ تضاعف عدد الترانزستورات كل عامين تقريبًا.",
+    key: "قانون مور ملاحظة تجريبية وليس قانونًا فيزيائيًا ثابتًا." },
+  { id: "leak", ar: "تسرب التيار", en: "Leakage Currents", ab: "", sec: "moore", unit: "moore2",
+    def: "تسرب جزء من التيار الكهربائي داخل الشريحة عندما تصبح المكونات صغيرة جدًا.",
+    simple: "عندما تصغر المكونات جدًا ويقترب بعضها من بعض، يهرب جزء من الكهرباء بدل أن يسير في مساره.",
+    ex: "تشبيه: أنبوب مياه رفيع جدًا تتسرب منه بعض المياه.",
+    key: "Leakage Currents: تحدٍّ من تحديات تصغير المكونات." },
+  { id: "qeff", ar: "التأثيرات الكمية", en: "Quantum Effects", ab: "", sec: "moore", unit: "moore2",
+    def: "ظواهر تظهر عند التعامل مع مكونات صغيرة جدًا، وتتبع قوانين فيزياء الكم فتؤثر على عمل الترانزستور.",
+    simple: "في العالم الصغير جدًا تتصرف الأشياء بطريقة مختلفة عمّا نتوقع، وهذا يربك عمل المكونات.",
+    ex: "إلكترون قد يسلك سلوكًا غير متوقع داخل ترانزستور صغير جدًا.",
+    key: "Quantum Effects: تظهر عندما تصبح المكونات صغيرة جدًا." },
+  { id: "qtun", ar: "النفق الكمي", en: "Quantum Tunneling", ab: "", sec: "moore", unit: "moore2",
+    def: "قدرة الإلكترونات على عبور حاجز كان يُفترض أن يمنعها.",
+    simple: "الإلكترون يعبر «الحائط» دون أن يتسلقه، فلا يبقى الحاجز مانعًا كما نريد.",
+    ex: "تشبيه: كرة تعبر حائطًا كأنه غير موجود.",
+    key: "Quantum Tunneling = عبور الإلكترونات حاجزًا كان يجب أن يمنعها." },
+  { id: "multicore", ar: "تعدد الأنوية", en: "Multi-core", ab: "", sec: "moore", unit: "moore3",
+    def: "وجود أكثر من نواة معالجة (Core) داخل الشريحة الواحدة.",
+    simple: "بدل عقل واحد يعمل، توجد عدة عقول صغيرة تعمل معًا داخل المعالج.",
+    ex: "معالج فيه عدة أنوية تتقاسم تنفيذ المهام.",
+    key: "Multi-core = أكثر من نواة في المعالج الواحد." },
+  { id: "parallel", ar: "المعالجة المتوازية", en: "Parallel Processing", ab: "", sec: "moore", unit: "moore3",
+    def: "تقسيم المهمة إلى أجزاء وتنفيذ هذه الأجزاء في الوقت نفسه.",
+    simple: "بدل أن يعمل شخص واحد على مهمة كبيرة، يقسمها عدة أشخاص وينجزونها معًا فتنتهي أسرع.",
+    ex: "تقسيم عملية حسابية كبيرة على عدة أنوية لتنفَّذ معًا.",
+    key: "Parallel Processing = تنفيذ أجزاء المهمة في وقت واحد." },
+  { id: "special", ar: "التصميمات المتخصصة", en: "Specialized Designs", ab: "", sec: "moore", unit: "moore3",
+    def: "تصميم معالجات أو مكونات لأداء مهام محددة بكفاءة أعلى.",
+    simple: "مثل أداة صُنعت لعمل واحد تؤديه أفضل من أداة عامة.",
+    ex: "معالج مخصص لمهمة معينة، مثل الرسومات أو الذكاء الاصطناعي (مثال للتوضيح).",
+    key: "التصميمات المتخصصة = مكونات مصممة لمهام محددة لتحسين الأداء." },
+  { id: "qcomp", ar: "الحوسبة الكمومية", en: "Quantum Computing", ab: "", sec: "moore", unit: "moore3",
+    def: "نوع من الحوسبة يستفيد من التأثيرات الكمية لحل أنواع معينة من المسائل.",
+    simple: "طريقة جديدة في الحساب قد تكون قوية جدًا في مسائل محددة، لكنها لا تحل محل الحاسب العادي في كل شيء.",
+    ex: "قد تفيد في فئات محددة من المسائل، بينما تبقى الحواسيب التقليدية مناسبة للاستخدامات العامة.",
+    key: "الحوسبة الكمومية ليست بديلًا عامًا للحواسيب التقليدية، وقد تفيد في فئات محددة من المسائل." },
+
+  { id: "sns", ar: "شبكات التواصل الاجتماعي", en: "Social Networking Services", ab: "SNS", sec: "social", unit: "social",
+    def: "مواقع وتطبيقات تتيح للناس التواصل ومشاركة الأخبار والصور والأفكار عبر الإنترنت.",
+    simple: "أماكن على الإنترنت نلتقي فيها بأصدقائنا وبالناس ونتبادل الكلام والصور.",
+    ex: "فيسبوك وإنستغرام.",
+    impact: "سهّلت التواصل بين الناس وسرّعت انتقال الأخبار والأفكار.",
+    key: "SNS = Social Networking Services = شبكات التواصل الاجتماعي." },
+  { id: "ecom", ar: "التجارة الإلكترونية", en: "E-commerce", ab: "", sec: "social", unit: "social",
+    def: "بيع السلع والخدمات وشراؤها عبر الإنترنت.",
+    simple: "تشتري ما تريد من متجر على الإنترنت دون الذهاب إلى المتجر.",
+    ex: "شراء منتج من متجر إلكتروني وتوصيله إلى المنزل.",
+    impact: "وفّرت الوقت والجهد على المشتري، وفتحت أسواقًا أوسع أمام البائعين.",
+    key: "E-commerce = التجارة الإلكترونية = بيع وشراء عبر الإنترنت." },
+  { id: "remote", ar: "العمل عن بُعد", en: "Remote Work", ab: "", sec: "social", unit: "social",
+    def: "أداء العمل من مكان بعيد عن مقر العمل باستخدام الإنترنت وأدوات التواصل.",
+    simple: "تنجز عملك من البيت أو من أي مكان بدل الذهاب كل يوم إلى مقر العمل.",
+    ex: "موظف ينجز عمله من منزله ويحضر الاجتماعات بمكالمة فيديو.",
+    impact: "قلّلت الحاجة إلى الانتقال إلى مقر العمل، وجعلت العمل ممكنًا من أي مكان.",
+    key: "Remote Work = العمل عن بُعد = العمل بعيدًا عن مقر العمل عبر الإنترنت." },
+  { id: "online", ar: "التعلم عبر الإنترنت", en: "Online Learning", ab: "", sec: "social", unit: "social",
+    def: "التعلم من خلال الإنترنت عبر منصات ودروس ودورات إلكترونية.",
+    simple: "تتعلم من بيتك في أي وقت دون الحضور إلى مكان محدد.",
+    ex: "حضور شرح أو دورة على منصة تعليمية من المنزل.",
+    impact: "أتاح التعلم في أي وقت وفي أي مكان لعدد أكبر من الناس.",
+    key: "Online Learning = التعلم عبر الإنترنت." },
+  { id: "cashless", ar: "الدفع غير النقدي", en: "Cashless Payment", ab: "", sec: "social", unit: "social",
+    def: "دفع الأموال دون استخدام النقود الورقية أو المعدنية، بل عبر بطاقات أو تطبيقات أو وسائل إلكترونية.",
+    simple: "تدفع ثمن ما تشتريه ببطاقة أو من هاتفك بدل حمل النقود.",
+    ex: "الدفع ببطاقة أو من تطبيق على الهاتف.",
+    impact: "جعل عمليات الدفع أسرع وأسهل، وقلّل الحاجة إلى حمل النقود.",
+    key: "Cashless Payment = الدفع غير النقدي = دفع بلا نقود ورقية أو معدنية." }
+];
+const TERM = Object.fromEntries(TERMS.map(t => [t.id, t]));
+
+/* ---------- المراحل الخمس ---------- */
+const STAGES = [
+  { n: 1, short: "الأربعينيات", years: "الأربعينيات – الستينيات", title: "عصر الحواسيب الضخمة", terms: ["eniac", "vacuum"],
+    happened: "ظهرت أولى الحواسيب الإلكترونية، ومن أشهرها الحاسوب ENIAC.",
+    tech: "الصمامات المفرغة (Vacuum Tubes).",
+    computers: "ضخمة جدًا وتملأ غرفة كاملة، ولا يمكن وضعها على المكتب.",
+    uses: "الحسابات الكبيرة داخل المؤسسات الكبيرة، ولم تكن للاستخدام الشخصي.",
+    impactLabel: "ما تأثيرها على المجتمع؟",
+    impact: "كان تأثيرها محدودًا في البداية لأنها لم تصل إلى الأفراد، لكنها كانت أول خطوة في طريق تطور تكنولوجيا المعلومات.",
+    key: "المرحلة الأولى = ENIAC + الصمامات المفرغة + حواسيب ضخمة تملأ غرفة." },
+  { n: 2, short: "السبعينيات", years: "السبعينيات – الثمانينيات", title: "ظهور الحواسب الشخصية", terms: ["pc"],
+    happened: "ظهرت الحواسب الشخصية (PCs)، وأصبح الحاسب أصغر حجمًا من الحواسيب الأولى.",
+    impactLabel: "تأثيرها على استخدام الأفراد للحاسب",
+    impact: "أصبح الأفراد يستخدمون الحاسب بأنفسهم في المنزل وفي العمل، بعد أن كان مقتصرًا على المؤسسات الكبيرة.",
+    key: "المرحلة الثانية = PCs = الحاسب أصبح للأفراد." },
+  { n: 3, short: "التسعينيات", years: "التسعينيات", title: "الإنترنت والويب والبريد الإلكتروني", terms: ["cominet", "web", "email"],
+    happened: "بدأ استخدام الإنترنت تجاريًا، وظهرت الشبكة العنكبوتية العالمية (Web)، وانتشر البريد الإلكتروني.",
+    impactLabel: "تأثيرها على الوصول للمعلومات والتواصل",
+    impact: "أصبح الوصول إلى المعلومات عالميًا، وسهُل التواصل بين الناس في أي مكان في العالم.",
+    key: "المرحلة الثالثة = الإنترنت تجاريًا + Web + البريد الإلكتروني = وصول عالمي للمعلومات وتواصل أسهل." },
+  { n: 4, short: "2000–2009", years: "2000 – 2009", title: "الهواتف الذكية", terms: ["smart"],
+    happened: "ظهرت الهواتف الذكية.",
+    impactLabel: "تأثيرها على انتشار الإنترنت",
+    impact: "انتشر استخدام الإنترنت عبر الهواتف، فأصبح متاحًا في كل وقت وفي أي مكان.",
+    key: "المرحلة الرابعة = الهواتف الذكية = الإنترنت في كل وقت ومكان." },
+  { n: 5, short: "2010+", years: "2010 فصاعدًا", title: "السحابة والبيانات الضخمة والذكاء الاصطناعي", terms: ["cloud", "bigdata", "ai"],
+    happened: "ظهرت الحوسبة السحابية، والبيانات الضخمة، والذكاء الاصطناعي.",
+    impactLabel: "تأثيرها على العمل والتواصل والتعلم",
+    impact: "أثّرت هذه التقنيات في طريقة العمل والتواصل والتعلم.",
+    key: "المرحلة الخامسة = Cloud + Big Data + AI = تغيير في العمل والتواصل والتعلم." }
+];
+
+/* ---------- أسئلة «علل» ---------- */
+const ILLA = [
+  { q: "تُعد تكنولوجيا المعلومات مثالًا واضحًا على مفهوم «التغيير».", a: "لأنها تتطور باستمرار، فأصبحت الأجهزة أصغر حجمًا وأكثر ترابطًا وتغيّرت معها حياة الناس.", s: "intro", top: 1 },
+  { q: "كانت الحواسيب الأولى ضخمة الحجم.", a: "لأنها كانت تعمل بالصمامات المفرغة، وهي مكونات كبيرة الحجم، فملأت غرفة كاملة.", s: "stages", top: 1 },
+  { q: "لم تكن الحواسيب الأولى مناسبة للاستخدام الفردي.", a: "لأنها كانت ضخمة وتملأ غرفة كاملة، وكان استخدامها مقتصرًا على المؤسسات الكبيرة.", s: "stages" },
+  { q: "كان تأثير الحواسيب الأولى على المجتمع محدودًا في البداية.", a: "لأنها لم تكن متاحة للأفراد، وكان استخدامها محصورًا في المؤسسات الكبيرة.", s: "stages" },
+  { q: "انتشرت الحواسب الشخصية (PCs) بين الأفراد.", a: "لأنها كانت أصغر حجمًا من الحواسيب الأولى، فاستطاع الأفراد استخدامها في المنزل وفي العمل.", s: "stages", top: 1 },
+  { q: "أحدث الإنترنت في التسعينيات تغييرًا كبيرًا في الوصول إلى المعلومات.", a: "لأن استخدامه تجاريًا وظهور الويب جعلا المعلومات متاحة للناس على مستوى العالم.", s: "stages", top: 1 },
+  { q: "أهمية البريد الإلكتروني في التواصل.", a: "لأنه يتيح إرسال الرسائل واستقبالها عبر الإنترنت بسرعة بين أي شخصين في العالم.", s: "stages" },
+  { q: "أصبح الإنترنت متاحًا في كل وقت وفي أي مكان بعد ظهور الهواتف الذكية.", a: "لأن الهواتف الذكية تتصل بالإنترنت ويحملها الناس معهم، فلم يعد الإنترنت مرتبطًا بمكان الحاسب.", s: "stages", top: 1 },
+  { q: "ظهور الحوسبة السحابية أفاد المستخدمين.", a: "لأنها تتيح تخزين البيانات ومعالجتها عبر الإنترنت والوصول إليها من أي جهاز بدل الاعتماد على جهاز واحد.", s: "stages", top: 1 },
+  { q: "أثّرت الحوسبة السحابية والبيانات الضخمة والذكاء الاصطناعي في العمل والتواصل والتعلم.", a: "لأنها تقنيات المرحلة الخامسة (2010 فصاعدًا) التي غيّرت طريقة أداء الناس لأعمالهم وتواصلهم وتعلمهم.", s: "stages" },
+  { q: "يُعد قانون مور مهمًا.", a: "لأنه يوضح أن عدد الترانزستورات يتضاعف تقريبًا كل عامين، مما يفسر تطور الحواسيب لتصبح أقوى وأصغر.", s: "moore", top: 1 },
+  { q: "لا يُعد قانون مور قانونًا فيزيائيًا ثابتًا.", a: "لأنه ملاحظة تجريبية مبنية على ما لوحظ من تطور فعلي، ولا يضمن الاستمرار دائمًا.", s: "moore", top: 1 },
+  { q: "يصعب تصغير الشرائح والترانزستورات إلى ما لا نهاية.", a: "بسبب تحديات مثل تسرب التيار (Leakage Currents) والتأثيرات الكمية (Quantum Effects) والنفق الكمي (Quantum Tunneling).", s: "moore", top: 1 },
+  { q: "يحدث تسرب التيار (Leakage Currents) في المكونات الصغيرة جدًا.", a: "لأنه عندما تصبح المكونات صغيرة جدًا يتسرب جزء من التيار الكهربائي بدل أن يبقى في مساره.", s: "moore" },
+  { q: "ظهر تعدد الأنوية (Multi-core) في المعالجات.", a: "لتحسين الأداء بزيادة عدد أنوية المعالجة داخل الشريحة الواحدة.", s: "moore", top: 1 },
+  { q: "تُستخدم المعالجة المتوازية (Parallel Processing).", a: "لأنها تقسّم المهمة إلى أجزاء تُنفَّذ في الوقت نفسه، فتُنجز أسرع.", s: "moore" },
+  { q: "تُستخدم التصميمات المتخصصة لتحسين الأداء.", a: "لأنها مصممة لأداء مهام محددة بكفاءة أعلى.", s: "moore" },
+  { q: "الحوسبة الكمومية ليست بديلًا عامًا للحواسيب التقليدية.", a: "لأنها قد تفيد في فئات محددة من المسائل فقط، بينما تبقى الحواسيب التقليدية مناسبة للاستخدامات العامة.", s: "moore", top: 1 },
+  { q: "انتشرت شبكات التواصل الاجتماعي (SNS).", a: "لأنها سهّلت التواصل بين الناس وتبادل الأخبار والأفكار عبر الإنترنت.", s: "social" },
+  { q: "انتشرت التجارة الإلكترونية.", a: "لأن الإنترنت جعل بيع السلع وشراءها ممكنًا دون الذهاب إلى المتجر، مما وفّر الوقت والجهد.", s: "social", top: 1 },
+  { q: "أصبح العمل عن بُعد ممكنًا.", a: "لأن الإنترنت وأدوات التواصل تتيح للموظف إنجاز عمله من مكان بعيد عن مقر العمل.", s: "social", top: 1 },
+  { q: "انتشر التعلم عبر الإنترنت.", a: "لأنه يتيح للمتعلم الدراسة في أي وقت وفي أي مكان دون الحضور إلى مكان محدد.", s: "social", top: 1 },
+  { q: "انتشر الدفع غير النقدي.", a: "لأنه يجعل الدفع أسرع وأسهل ويقلل الحاجة إلى حمل النقود.", s: "social" }
+];
+
+/* ---------- صح أم خطأ: [العبارة، الإجابة، التصحيح، الشرح، القسم] ---------- */
+const TF = [
+  ["كانت الحواسيب الأولى صغيرة ويمكن وضعها على المكتب.", false, "كانت الحواسيب الأولى ضخمة وتملأ غرفة كاملة.", "استُخدمت فيها الصمامات المفرغة وكانت كبيرة الحجم.", "stages"],
+  ["استخدم الحاسوب ENIAC الصمامات المفرغة.", true, "", "ENIAC والصمامات المفرغة من مصطلحات المرحلة الأولى.", "stages"],
+  ["المرحلة الأولى من تطور تكنولوجيا المعلومات كانت في الأربعينيات – الستينيات.", true, "", "وفيها ظهر الحاسوب ENIAC.", "stages"],
+  ["ظهرت الحواسب الشخصية PCs في التسعينيات.", false, "ظهرت الحواسب الشخصية في السبعينيات – الثمانينيات.", "التسعينيات هي مرحلة الإنترنت والويب والبريد الإلكتروني.", "stages"],
+  ["جعلت الحواسب الشخصية الأفراد يستخدمون الحاسب في حياتهم.", true, "", "أصبح الحاسب في متناول الأفراد بعد أن كان للمؤسسات الكبيرة.", "stages"],
+  ["بدأ استخدام الإنترنت للأغراض التجارية في التسعينيات.", true, "", "وهي المرحلة الثالثة من مراحل التطور.", "stages"],
+  ["الإنترنت والويب شيء واحد ولا يوجد أي فرق بينهما.", false, "الإنترنت هو الشبكة العالمية، أما الويب فهو الصفحات والمواقع التي نتصفحها عبرها.", "الويب خدمة تعمل فوق الإنترنت.", "stages"],
+  ["ظهر البريد الإلكتروني في المرحلة الخامسة (2010 فصاعدًا).", false, "البريد الإلكتروني من مصطلحات مرحلة التسعينيات.", "المرحلة الخامسة هي الحوسبة السحابية والبيانات الضخمة والذكاء الاصطناعي.", "stages"],
+  ["ظهرت الهواتف الذكية في الفترة 2000 – 2009.", true, "", "وهي المرحلة الرابعة.", "stages"],
+  ["أدت الهواتف الذكية إلى انتشار الإنترنت في كل وقت وفي أي مكان.", true, "", "لأن الناس يحملون الهاتف معهم أينما ذهبوا.", "stages"],
+  ["الحوسبة السحابية من مصطلحات المرحلة الثانية.", false, "الحوسبة السحابية من مصطلحات المرحلة الخامسة (2010 فصاعدًا).", "المرحلة الثانية هي الحواسب الشخصية.", "stages"],
+  ["البيانات الضخمة (Big Data) من مصطلحات المرحلة الخامسة.", true, "", "مع الحوسبة السحابية والذكاء الاصطناعي.", "stages"],
+  ["الذكاء الاصطناعي (AI) من مصطلحات المرحلة الرابعة.", false, "الذكاء الاصطناعي من مصطلحات المرحلة الخامسة (2010 فصاعدًا).", "المرحلة الرابعة هي الهواتف الذكية.", "stages"],
+  ["ENIAC من مصطلحات المرحلة الثالثة.", false, "ENIAC من مصطلحات المرحلة الأولى (الأربعينيات – الستينيات).", "المرحلة الثالثة هي الإنترنت والويب والبريد الإلكتروني.", "stages"],
+  ["تطورت تكنولوجيا المعلومات فأصبحت الأجهزة أكبر حجمًا وأقل ترابطًا.", false, "أصبحت الأجهزة أصغر حجمًا وأكثر ترابطًا.", "هذه هي الفكرة الأساسية للدرس.", "intro"],
+  ["المفهوم المحوري في الدرس هو «التغيير».", true, "", "لأن تقنيات المعلومات تتغير وتتطور باستمرار.", "intro"],
+  ["ينص قانون مور على أن عدد الترانزستورات يتضاعف تقريبًا كل عامين.", true, "", "وهذا ما يجعل الحواسيب أقوى وأصغر مع الوقت.", "moore"],
+  ["ينص قانون مور على أن عدد الترانزستورات يتضاعف كل عشرين عامًا.", false, "يتضاعف عدد الترانزستورات تقريبًا كل عامين.", "المدة في قانون مور هي عامان تقريبًا.", "moore"],
+  ["قانون مور قانون فيزيائي ثابت لا يتغير أبدًا.", false, "قانون مور ملاحظة تجريبية وليس قانونًا فيزيائيًا ثابتًا.", "لأنه مبني على ما لوحظ من تطور فعلي.", "moore"],
+  ["Leakage Currents تعني تسرب التيار الكهربائي.", true, "", "وهو من تحديات تصغير المكونات.", "moore"],
+  ["Quantum Tunneling هو عبور الإلكترونات حاجزًا كان يُفترض أن يمنعها.", true, "", "وهو من تحديات تصغير المكونات.", "moore"],
+  ["يمكن تصغير الترانزستورات إلى ما لا نهاية دون أي مشكلات.", false, "يواجه تصغير المكونات تحديات مثل تسرب التيار والتأثيرات الكمية والنفق الكمي.", "لذلك ظهرت حلول أخرى لتحسين الأداء.", "moore"],
+  ["Multi-core تعني وجود أكثر من نواة معالجة في الشريحة.", true, "", "وهو من الحلول الحديثة لتحسين الأداء.", "moore"],
+  ["المعالجة المتوازية تعني تنفيذ المهمة خطوة واحدة فقط في كل مرة.", false, "المعالجة المتوازية تقسّم المهمة إلى أجزاء تُنفَّذ في الوقت نفسه.", "لهذا تُنجز المهمة أسرع.", "moore"],
+  ["التصميمات المتخصصة تُصمَّم لأداء مهام محددة بكفاءة أعلى.", true, "", "وهي من الحلول الحديثة لتحسين الأداء.", "moore"],
+  ["الحوسبة الكمومية بديل عام لكل الحواسيب التقليدية.", false, "الحوسبة الكمومية ليست بديلًا عامًا، وقد تفيد في فئات محددة من المسائل.", "الحواسيب التقليدية تبقى مناسبة للاستخدامات العامة.", "moore"],
+  ["قد تفيد الحوسبة الكمومية في فئات محددة من المسائل.", true, "", "لكنها ليست بديلًا عامًا للحواسيب التقليدية.", "moore"],
+  ["SNS هو اختصار Social Networking Services.", true, "", "ومعناه شبكات التواصل الاجتماعي.", "social"],
+  ["التجارة الإلكترونية هي البيع والشراء عبر الإنترنت.", true, "", "E-commerce = التجارة الإلكترونية.", "social"],
+  ["العمل عن بُعد يتطلب الحضور إلى مقر العمل كل يوم.", false, "العمل عن بُعد يعني أداء العمل من مكان بعيد عن مقر العمل باستخدام الإنترنت.", "Remote Work = العمل عن بُعد.", "social"],
+  ["التعلم عبر الإنترنت لا يمكن أن يتم إلا داخل الفصل الدراسي.", false, "التعلم عبر الإنترنت يتم عبر الإنترنت في أي وقت وفي أي مكان.", "Online Learning = التعلم عبر الإنترنت.", "social"],
+  ["الدفع غير النقدي يعني الدفع دون استخدام النقود الورقية أو المعدنية.", true, "", "Cashless Payment = الدفع غير النقدي.", "social"],
+  ["الدفع ببطاقة أو بتطبيق على الهاتف مثال على الدفع غير النقدي.", true, "", "لأنه دفع بلا نقود ورقية أو معدنية.", "social"],
+  ["سهّلت شبكات التواصل الاجتماعي التواصل بين الناس.", true, "", "وسرّعت انتقال الأخبار والأفكار.", "social"]
+];
+
+/* ---------- اختر الإجابة الصحيحة: الخيار الأول هو الصحيح (يُخلط تلقائيًا) ---------- */
+const MCQ = [
+  { q: "ما المفهوم المحوري في درس تاريخ تكنولوجيا المعلومات؟", o: ["التغيير", "الثبات", "الحماية", "التخزين"], e: "الدرس يوضح كيف تتغير تقنيات المعلومات وتتطور باستمرار.", s: "intro" },
+  { q: "ما الفكرة الأساسية للدرس؟", o: ["تطورت تقنيات المعلومات وأصبحت الأجهزة أصغر حجمًا وأكثر ترابطًا", "بقيت الحواسيب كما هي منذ ظهورها", "أصبحت الأجهزة أكبر حجمًا وأقل ترابطًا", "توقف تطور تقنيات المعلومات"], e: "الفكرة الأساسية: أجهزة أصغر وأكثر ترابطًا.", s: "intro" },
+  { q: "كم عدد المراحل التاريخية لتطور تكنولوجيا المعلومات في الدرس؟", o: ["خمس مراحل", "ثلاث مراحل", "أربع مراحل", "ست مراحل"], e: "المراحل: الحواسيب الضخمة، الحواسب الشخصية، الإنترنت والويب، الهواتف الذكية، ثم السحابة والبيانات والذكاء الاصطناعي.", s: "stages" },
+  { q: "أي مصطلح من مصطلحات المرحلة الأولى (الأربعينيات – الستينيات)؟", o: ["ENIAC", "Web", "Smartphones", "Cloud Computing"], e: "ENIAC والصمامات المفرغة من مصطلحات المرحلة الأولى.", s: "stages" },
+  { q: "ما التقنية المستخدمة في الحواسيب الأولى؟", o: ["الصمامات المفرغة", "الذكاء الاصطناعي", "الحوسبة السحابية", "الهواتف الذكية"], e: "الصمامات المفرغة (Vacuum Tubes) هي تقنية المرحلة الأولى.", s: "stages" },
+  { q: "كيف كانت الحواسيب الأولى؟", o: ["ضخمة وتملأ غرفة كاملة", "صغيرة وتوضع على المكتب", "بحجم الهاتف", "تعمل عبر الإنترنت فقط"], e: "كانت ضخمة جدًا وتملأ غرفة كاملة.", s: "stages" },
+  { q: "في أي فترة ظهرت الحواسب الشخصية PCs؟", o: ["السبعينيات – الثمانينيات", "الأربعينيات – الستينيات", "التسعينيات", "2010 فصاعدًا"], e: "الحواسب الشخصية هي المرحلة الثانية (السبعينيات – الثمانينيات).", s: "stages" },
+  { q: "ما تأثير الحواسب الشخصية على الأفراد؟", o: ["أصبح الأفراد يستخدمون الحاسب بأنفسهم", "أصبحت الحواسيب تملأ غرفة كاملة", "توقف الأفراد عن استخدام الحاسب", "أصبح الحاسب مقتصرًا على المؤسسات الكبيرة فقط"], e: "الحواسب الشخصية جعلت الحاسب في متناول الأفراد.", s: "stages" },
+  { q: "في أي مرحلة بدأ استخدام الإنترنت تجاريًا؟", o: ["التسعينيات", "الأربعينيات – الستينيات", "السبعينيات – الثمانينيات", "2010 فصاعدًا"], e: "التسعينيات: الإنترنت تجاريًا + الويب + البريد الإلكتروني.", s: "stages" },
+  { q: "أي مما يلي ظهر في مرحلة التسعينيات؟", o: ["البريد الإلكتروني", "الحوسبة السحابية", "الهواتف الذكية", "ENIAC"], e: "البريد الإلكتروني من مصطلحات مرحلة التسعينيات.", s: "stages" },
+  { q: "ما أهم تأثير للإنترنت والويب والبريد الإلكتروني؟", o: ["وصول عالمي للمعلومات وتواصل أسهل", "زيادة حجم الحواسيب", "الاعتماد على الصمامات المفرغة", "منع الناس من تبادل المعلومات"], e: "أصبح الوصول للمعلومات عالميًا وأصبح التواصل أسهل.", s: "stages" },
+  { q: "في أي فترة ظهرت الهواتف الذكية؟", o: ["2000 – 2009", "الأربعينيات – الستينيات", "السبعينيات – الثمانينيات", "التسعينيات"], e: "الهواتف الذكية هي المرحلة الرابعة (2000 – 2009).", s: "stages" },
+  { q: "ما أهم تأثير للهواتف الذكية؟", o: ["انتشار الإنترنت عبر الهواتف في كل وقت وفي أي مكان", "اختفاء الإنترنت", "عودة الحواسيب الضخمة", "توقف استخدام البريد الإلكتروني"], e: "الهاتف يحمله الشخص معه، فأصبح الإنترنت متاحًا دائمًا.", s: "stages" },
+  { q: "أي من المصطلحات التالية ينتمي إلى المرحلة الخامسة (2010 فصاعدًا)؟", o: ["Cloud Computing", "Vacuum Tubes", "ENIAC", "PCs"], e: "الحوسبة السحابية والبيانات الضخمة والذكاء الاصطناعي هي مصطلحات المرحلة الخامسة.", s: "stages" },
+  { q: "ما المعنى العربي لمصطلح Big Data؟", o: ["البيانات الضخمة", "الحوسبة الكمومية", "الدفع غير النقدي", "العمل عن بُعد"], e: "Big Data = البيانات الضخمة.", s: "stages" },
+  { q: "ماذا يعني الاختصار AI؟", o: ["الذكاء الاصطناعي", "الإنترنت التجاري", "الحواسب الشخصية", "التجارة الإلكترونية"], e: "AI = Artificial Intelligence = الذكاء الاصطناعي.", s: "stages" },
+  { q: "ما العلاقة بين الإنترنت والويب؟", o: ["الإنترنت هو الشبكة، والويب خدمة صفحات ومواقع تعمل عليها", "الويب هو الشبكة، والإنترنت مجرد موقع", "لا فرق إطلاقًا بينهما", "الإنترنت أجهزة والويب حواسيب أولى"], e: "الويب هو الصفحات والمواقع التي نتصفحها عبر الإنترنت.", s: "stages" },
+  { q: "ما فائدة الحوسبة السحابية؟", o: ["التخزين والمعالجة عبر الإنترنت والوصول من أي جهاز", "إبطاء الإنترنت", "إعادة الحواسيب إلى الغرف الكبيرة", "إلغاء الهواتف الذكية"], e: "لا نعتمد على جهاز واحد فقط، بل نصل لبياناتنا من أي جهاز.", s: "stages" },
+  { q: "ينص قانون مور على أن عدد الترانزستورات يتضاعف تقريبًا كل:", o: ["عامين", "شهر", "عشرة أعوام", "عام واحد"], e: "يتضاعف عدد الترانزستورات تقريبًا كل عامين.", s: "moore" },
+  { q: "قانون مور هو:", o: ["ملاحظة تجريبية", "قانون فيزيائي ثابت", "جهاز إلكتروني", "نوع من أنواع الإنترنت"], e: "ليس قانونًا فيزيائيًا ثابتًا، بل ملاحظة تجريبية.", s: "moore" },
+  { q: "لماذا كان قانون مور مهمًا؟", o: ["لأنه يوضح سرعة تطور الحواسيب وزيادة قدرتها", "لأنه يمنع تطور الحواسيب", "لأنه يشرح كيفية إرسال البريد الإلكتروني", "لأنه يحدد سعر الحاسب"], e: "زيادة عدد الترانزستورات تجعل الحواسيب أقوى وأصغر.", s: "moore" },
+  { q: "أي مما يلي تحدٍّ يواجه تصغير المكونات؟", o: ["Leakage Currents", "E-commerce", "Online Learning", "SNS"], e: "تسرب التيار من تحديات التصغير، إلى جانب التأثيرات الكمية والنفق الكمي.", s: "moore" },
+  { q: "ما اسم الظاهرة التي تعبر فيها الإلكترونات حاجزًا كان يُفترض أن يمنعها؟", o: ["Quantum Tunneling", "Multi-core", "Cloud Computing", "Big Data"], e: "Quantum Tunneling = النفق الكمي.", s: "moore" },
+  { q: "ما المقصود بـ Multi-core؟", o: ["وجود أكثر من نواة معالجة في الشريحة", "تسرب التيار الكهربائي", "التعلم عبر الإنترنت", "الدفع بدون نقود"], e: "Multi-core = تعدد الأنوية.", s: "moore" },
+  { q: "ما المقصود بـ Parallel Processing؟", o: ["تقسيم المهمة وتنفيذ أجزائها في الوقت نفسه", "تنفيذ المهام واحدة تلو الأخرى فقط", "تصغير الترانزستورات", "تخزين الملفات على الإنترنت"], e: "المعالجة المتوازية تنفّذ أجزاء المهمة معًا.", s: "moore" },
+  { q: "ما سبب ظهور Multi-core ضمن الحلول الحديثة؟", o: ["لتحسين الأداء بزيادة عدد أنوية المعالجة", "لتكبير حجم الشريحة فقط", "لإيقاف قانون مور", "لإلغاء الحواسيب التقليدية"], e: "هو أحد الحلول الحديثة لتحسين الأداء.", s: "moore" },
+  { q: "ما المقصود بالتصميمات المتخصصة؟", o: ["تصميم مكونات لأداء مهام محددة بكفاءة أعلى", "تصغير الترانزستورات دون حدود", "تخزين الملفات على الإنترنت", "إرسال الرسائل عبر الشبكة"], e: "هي مكونات مصممة لمهام معينة لتحسين الأداء.", s: "moore" },
+  { q: "أي عبارة صحيحة عن الحوسبة الكمومية؟", o: ["قد تفيد في فئات محددة من المسائل", "هي بديل عام لكل الحواسيب التقليدية", "تعمل بالصمامات المفرغة", "ظهرت في المرحلة الأولى"], e: "الحوسبة الكمومية ليست بديلًا عامًا، بل قد تفيد في فئات محددة من المسائل.", s: "moore" },
+  { q: "ماذا تعني SNS؟", o: ["شبكات التواصل الاجتماعي", "التجارة الإلكترونية", "العمل عن بُعد", "الدفع غير النقدي"], e: "SNS = Social Networking Services.", s: "social" },
+  { q: "ما المقصود بـ E-commerce؟", o: ["التجارة الإلكترونية", "التعلم عبر الإنترنت", "الحوسبة السحابية", "الذكاء الاصطناعي"], e: "بيع وشراء السلع والخدمات عبر الإنترنت.", s: "social" },
+  { q: "أداء العمل من مكان بعيد عن مقر العمل باستخدام الإنترنت يسمى:", o: ["Remote Work", "Cashless Payment", "Big Data", "Multi-core"], e: "Remote Work = العمل عن بُعد.", s: "social" },
+  { q: "ما الاسم الإنجليزي للتعلم عبر الإنترنت؟", o: ["Online Learning", "Remote Work", "Quantum Tunneling", "E-commerce"], e: "Online Learning = التعلم عبر الإنترنت.", s: "social" },
+  { q: "أي مثال يُعد دفعًا غير نقدي؟", o: ["الدفع ببطاقة أو بتطبيق على الهاتف", "الدفع بأوراق نقدية", "الدفع بعملات معدنية", "الدفع بالنقود عند الاستلام"], e: "الدفع غير النقدي لا يستخدم النقود الورقية أو المعدنية.", s: "social" },
+  { q: "أي مما يلي ليس من التغيرات الاجتماعية والاقتصادية المذكورة في الدرس؟", o: ["Vacuum Tubes", "SNS", "Remote Work", "Cashless Payment"], e: "الصمامات المفرغة تقنية المرحلة الأولى، وليست من التغيرات الاجتماعية والاقتصادية.", s: "social" },
+  { q: "أي مرحلة ارتبطت بتأثير على العمل والتواصل والتعلم؟", o: ["المرحلة الخامسة (2010 فصاعدًا)", "المرحلة الأولى", "المرحلة الثانية", "لا شيء مما سبق"], e: "الحوسبة السحابية والبيانات الضخمة والذكاء الاصطناعي أثّرت في العمل والتواصل والتعلم.", s: "stages" }
+];
+
+/* ---------- المقارنات: rows = [الصفة، الأول، الثاني، (اختياري 'x' = لا تُستخدم في الامتحان)] ---------- */
+const CMP = [
+  { id: "c1", s: "stages", a: "الحواسيب الأولى", b: "الحواسب الشخصية", rows: [
+    ["الفترة", "الأربعينيات – الستينيات", "السبعينيات – الثمانينيات"],
+    ["الحجم", "ضخمة وتملأ غرفة كاملة", "أصغر حجمًا وتناسب الأفراد"],
+    ["المصطلح المرتبط", "ENIAC والصمامات المفرغة", "PCs"],
+    ["من يستخدمها؟", "المؤسسات الكبيرة", "الأفراد في المنزل والعمل"],
+    ["التأثير", "تأثير محدود في البداية لأنها لم تصل إلى الأفراد", "بدأ الأفراد باستخدام الحاسب بأنفسهم"]
+  ] },
+  { id: "c2", s: "stages", a: "الإنترنت", b: "الويب", rows: [
+    ["التعريف", "شبكة عالمية تربط الحواسيب والأجهزة", "صفحات ومواقع نتصفحها عبر الإنترنت"],
+    ["الاسم بالإنجليزية", "Internet", "World Wide Web (Web)"],
+    ["العلاقة بينهما", "الأساس الذي تنتقل عليه البيانات", "خدمة تعمل فوق الإنترنت"],
+    ["الفترة", "التسعينيات", "التسعينيات", "x"],
+    ["التأثير", "وصول عالمي للمعلومات والتواصل", "سهولة تصفح المعلومات على مستوى العالم", "x"]
+  ] },
+  { id: "c3", s: "stages", a: "الحوسبة السحابية", b: "الحوسبة التقليدية", rows: [
+    ["مكان التخزين والمعالجة", "عبر الإنترنت وليس على جهاز واحد فقط", "على جهاز المستخدم نفسه"],
+    ["الوصول إلى الملفات", "من أي جهاز وفي أي مكان عبر الإنترنت", "من الجهاز الموجودة عليه غالبًا"],
+    ["الحاجة إلى الإنترنت", "ضرورية", "ليست ضرورية غالبًا"],
+    ["المرحلة التاريخية", "الخامسة (2010 فصاعدًا)", "أقدم من المرحلة الخامسة"]
+  ] },
+  { id: "c4", s: "moore", a: "Multi-core", b: "Parallel Processing", rows: [
+    ["الاسم بالعربي", "تعدد الأنوية", "المعالجة المتوازية"],
+    ["ما هو؟", "وجود أكثر من نواة معالجة في الشريحة", "تقسيم المهمة وتنفيذ أجزائها في الوقت نفسه"],
+    ["نوعه", "تصميم داخل الشريحة (المعالج)", "أسلوب في تنفيذ المهام"],
+    ["مثال", "معالج فيه عدة أنوية", "تقسيم عملية حسابية كبيرة على عدة أنوية لتنفَّذ معًا"]
+  ] },
+  { id: "c5", s: "moore", a: "الحوسبة التقليدية", b: "الحوسبة الكمومية", rows: [
+    ["الأساس", "ترانزستورات ودوائر إلكترونية", "تستفيد من التأثيرات الكمية (Quantum Effects)"],
+    ["مجال الاستخدام", "استخدامات عامة متنوعة", "فئات محددة من المسائل"],
+    ["هل هي بديل عن الأخرى؟", "تبقى مناسبة للاستخدامات العامة", "ليست بديلًا عامًا للحواسيب التقليدية"]
+  ] },
+  { id: "c6", s: "social", a: "العمل عن بُعد", b: "العمل التقليدي", rows: [
+    ["مكان العمل", "أي مكان بعيد عن مقر العمل", "مقر العمل"],
+    ["الاعتماد على الإنترنت", "كبير (للتواصل وإنجاز العمل)", "أقل"],
+    ["الانتقال", "تقل الحاجة إلى الانتقال إلى مقر العمل", "يحتاج الموظف إلى الذهاب إلى مقر العمل"],
+    ["التواصل", "عبر الإنترنت وأدوات التواصل (مثل مكالمات الفيديو)", "وجهًا لوجه غالبًا"]
+  ] },
+  { id: "c7", s: "social", a: "التعلم عبر الإنترنت", b: "التعلم التقليدي", rows: [
+    ["مكان التعلم", "أي مكان عبر الإنترنت", "داخل الفصل أو المدرسة"],
+    ["الوقت", "في أي وقت غالبًا", "حسب جدول ثابت غالبًا"],
+    ["الأدوات", "منصات ودروس ودورات إلكترونية", "الكتب والسبورة وحضور المعلم في الفصل"],
+    ["الاسم بالإنجليزية", "Online Learning", "Traditional Learning"]
+  ] },
+  { id: "c8", s: "social", a: "الدفع النقدي", b: "الدفع غير النقدي", rows: [
+    ["الوسيلة", "أوراق نقدية وعملات معدنية", "بطاقات وتطبيقات ووسائل إلكترونية"],
+    ["الشكل", "مادي (نقود في اليد)", "رقمي (إلكتروني)"],
+    ["الاعتماد على التقنية", "قليل", "كبير"],
+    ["الاسم بالإنجليزية", "Cash Payment", "Cashless Payment"],
+    ["الأثر", "يحتاج الشخص إلى حمل النقود", "أسرع وأسهل ويقلل الحاجة إلى حمل النقود"]
+  ] }
+];
+
+/* ---------- المراجعة السريعة ---------- */
+const QUICK = [
+  { t: "الفكرة العامة", s: "intro", pts: [
+    "المفهوم المحوري: التغيير.",
+    "تطورت تقنيات المعلومات وأصبحت الأجهزة أصغر حجمًا وأكثر ترابطًا.",
+    "مرّت تكنولوجيا المعلومات بخمس مراحل تاريخية."] },
+  { t: "المراحل الخمس", s: "stages", pts: [
+    "1) الأربعينيات – الستينيات: ENIAC + الصمامات المفرغة، حواسيب ضخمة تملأ غرفة.",
+    "2) السبعينيات – الثمانينيات: الحواسب الشخصية PCs، الحاسب للأفراد.",
+    "3) التسعينيات: الإنترنت تجاريًا + Web + البريد الإلكتروني، وصول عالمي للمعلومات وتواصل أسهل.",
+    "4) 2000 – 2009: الهواتف الذكية، الإنترنت في كل وقت وفي أي مكان.",
+    "5) 2010 فصاعدًا: Cloud Computing + Big Data + AI، تأثير على العمل والتواصل والتعلم."] },
+  { t: "قانون مور", s: "moore", pts: [
+    "عدد الترانزستورات في الشريحة يتضاعف تقريبًا كل عامين.",
+    "مهم لأنه يفسر تطور الحواسيب لتصبح أقوى وأصغر.",
+    "هو ملاحظة تجريبية وليس قانونًا فيزيائيًا ثابتًا."] },
+  { t: "تحديات تصغير المكونات", s: "moore", pts: [
+    "Leakage Currents: تسرب التيار.",
+    "Quantum Effects: التأثيرات الكمية عند الأحجام الصغيرة جدًا.",
+    "Quantum Tunneling: عبور الإلكترونات حاجزًا كان يجب أن يمنعها."] },
+  { t: "الحلول الحديثة لتحسين الأداء", s: "moore", pts: [
+    "Multi-core: أكثر من نواة معالجة في الشريحة.",
+    "Parallel Processing: تقسيم المهمة وتنفيذ أجزائها في الوقت نفسه.",
+    "التصميمات المتخصصة: مكونات لمهام محددة.",
+    "Quantum Computing: قد تفيد في فئات محددة من المسائل، وليست بديلًا عامًا للحواسيب التقليدية."] },
+  { t: "التغيرات الاجتماعية والاقتصادية", s: "social", pts: [
+    "SNS: شبكات التواصل الاجتماعي.",
+    "E-commerce: التجارة الإلكترونية.",
+    "Remote Work: العمل عن بُعد.",
+    "Online Learning: التعلم عبر الإنترنت.",
+    "Cashless Payment: الدفع غير النقدي."] }
+];
+
+
+/* ===================== أدوات ===================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = s => String(s || "").toLowerCase().replace(/[\u064B-\u065F\u0670\u0640]/g, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه");
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = (a, n) => shuffle(a).slice(0, n);
+const LET = ["أ", "ب", "ج", "د"];
+const ICONS = {
+  home: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book: '<path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/>',
+  type: '<path d="M4 7V5h16v2"/><path d="M12 5v14"/><path d="M9 19h6"/>',
+  help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+  scale: '<path d="M12 3v18"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 21h8"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  clip: '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  heart: '<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  chevL: '<path d="m15 18-6-6 6-6"/>',
+  chevR: '<path d="m9 18 6-6-6-6"/>',
+  down: '<path d="m6 9 6 6 6-6"/>',
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  shuffle: '<path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/>',
+  redo: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>',
+  zap: '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+  bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.3 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'
+};
+const ic = (n, s = 20) => `<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ""}</svg>`;
+const sc = s => `style="--sc:var(--c-${s})"`;
+
+/* ===================== الحفظ (Local Storage) ===================== */
+const KEY = "it-lesson-1-1-v1";
+const defState = () => ({ studied: {}, favs: {}, best: {}, history: [] });
+let ST = defState();
+try { const raw = localStorage.getItem(KEY); if (raw) ST = Object.assign(defState(), JSON.parse(raw)); } catch (e) { }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) { } }
+function progress() {
+  const done = UNITS.filter(u => ST.studied[u.id]).length;
+  return { done, total: UNITS.length, pct: Math.round(done / UNITS.length * 100) };
+}
+const favCount = () => Object.keys(ST.favs).filter(k => ST.favs[k]).length;
+let toastT = null;
+function toast(msg) { const t = $("#toast"); if (!t) return; t.textContent = msg; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), 1700); }
+
+/* ===================== بيانات مشتقة ===================== */
+const ILLA_V = ILLA.map((x, i) => Object.assign({ id: "i" + i, n: i + 1 }, x));
+const TF_V = TF.map((x, i) => ({ id: "t" + i, n: i + 1, q: x[0], a: x[1], c: x[2], e: x[3], s: x[4] }));
+function mcqQ(m) {
+  const sh = shuffle(m.o.map((t, k) => ({ t, c: k === 0 })));
+  return { id: m.id, type: "mcq", s: m.s, q: m.q, options: sh.map(o => o.t), ans: sh.findIndex(o => o.c), exp: m.e, e: m.e };
+}
+const MCQ_R = MCQ.map((x, i) => Object.assign({ id: "m" + i, n: i + 1 }, x));
+const MCQ_V = MCQ_R.map(m => Object.assign({ n: m.n }, mcqQ(m)));
+
+/* ===================== التنقل ===================== */
+const NAV = [["home", "الرئيسية"], ["study", "المذاكرة"], ["glossary", "المصطلحات"], ["questions", "الأسئلة"], ["compare", "المقارنات"], ["quiz", "اختبر نفسك"], ["exam", "الامتحان الشامل"], ["review", "المراجعة النهائية"]];
+let cur = "", refreshCur = null;
+function go(p) {
+  if (p === cur) { route(p); return; }
+  try { location.hash = p; } catch (e) { }
+  route(p);
+}
+window.addEventListener("hashchange", () => { const p = location.hash.slice(1) || "home"; if (p !== cur) route(p); });
+
+function route(p, keep) {
+  cur = p; refreshCur = null;
+  const parts = p.split("/"), a = parts[0], b = parts[1];
+  closeModal();
+  const gs = $("#gs"); if (gs && a !== "search") gs.value = "";
+  let html;
+  switch (a) {
+    case "study": html = b ? vUnit(b) : vStudy(); break;
+    case "glossary": html = vGlossary(); break;
+    case "questions": html = vQuestions(b || "illa"); break;
+    case "compare": html = vCompare(); break;
+    case "quiz": html = vQuiz("quiz"); break;
+    case "exam": html = vQuiz("exam"); break;
+    case "review": html = vReview(b || "quick"); break;
+    default: html = vHome(); cur = "home";
+  }
+  $("#main").innerHTML = html;
+  const post = POST[a]; if (post) post(b);
+  const act = NAV.some(n => n[0] === a) ? a : "home";
+  $$(".tab").forEach(t => { const on = t.dataset.go === act; t.classList.toggle("on", on); if (on) t.setAttribute("aria-current", "page"); else t.removeAttribute("aria-current"); });
+  updateMini();
+  if (!keep) { try { window.scrollTo(0, 0); } catch (e) { } }
+}
+function updateMini() { const p = progress(); const m = $("#minip"); if (m) m.innerHTML = `<span>${p.pct}%</span><div class="progress"><i style="width:${p.pct}%"></i></div>`; }
+
+/* ===================== الرئيسية ===================== */
+function rulerSVG() {
+  let tubes = "";
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 6; c++) tubes += `<rect x="${244 + c * 16}" y="${50 + r * 30}" width="7" height="20" rx="3.5"/>`;
+  return `<svg class="ruler" viewBox="0 0 360 150" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="حاسوب ضخم ثم حاسب شخصي ثم هاتف ذكي: أصغر وأكثر ترابطًا">
+    <path d="M300 20H60M70 14 60 20l10 6" stroke-width="2"/>
+    <text x="180" y="12" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-family="inherit">أصغر حجمًا وأكثر ترابطًا</text>
+    <rect x="232" y="38" width="112" height="80" rx="6"/>${tubes}
+    <rect x="118" y="68" width="68" height="40" rx="5"/><path d="M152 108v6M134 114h36"/>
+    <rect x="44" y="84" width="24" height="34" rx="5"/><path d="M52 111h8"/>
+    <path d="M20 120H350" stroke-dasharray="2 6" stroke-width="2" opacity=".6"/>
+    <g fill="currentColor" stroke="none" font-size="12" text-anchor="middle" font-family="inherit"><text x="288" y="140">ENIAC</text><text x="152" y="140">PC</text><text x="56" y="140">Smartphone</text></g></svg>`;
+}
+function vHome() {
+  const p = progress(), nx = UNITS.find(u => !ST.studied[u.id]);
+  const best = ST.best.exam;
+  const nq = ILLA.length + TF.length + MCQ.length;
+  const tile = (go, t, sub, icn, s, main) => `<button class="tile ${main ? "main" : ""}" data-go="${go}" style="--sc:${s}"><span class="tile-ic">${ic(icn, 24)}</span><span><b>${t}</b><small>${sub}</small></span></button>`;
+  return `
+  <section class="hero">
+    <div>
+      <span class="badge on-dark">الدرس 1-1</span>
+      <h1>تاريخ تكنولوجيا المعلومات (IT)</h1>
+      <p>من حاسوب يملأ غرفة كاملة إلى جهاز صغير في يدك. ذاكر الدرس خطوة خطوة، ثم اختبر نفسك.</p>
+      <div class="hp">
+        <div class="pl"><span>نسبة إنجازك</span><b>${p.pct}%</b></div>
+        <div class="progress"><i style="width:${p.pct}%"></i></div>
+        <small>أنهيت ${p.done} من ${p.total} وحدات دراسية</small>
+      </div>
+      ${nx ? `<button class="btn" data-go="study/${nx.id}">${p.done ? "تابع من حيث توقفت:" : "الوحدة الأولى:"} ${esc(nx.title)}</button>` : `<p style="margin-top:12px"><b>أنهيت كل الوحدات. انتقل إلى المراجعة النهائية.</b></p>`}
+    </div>
+    <div>${rulerSVG()}</div>
+  </section>
+  <div class="stats">
+    <div class="stat" ${sc("stages")}><b>${TERMS.length}</b><span>مصطلحًا</span></div>
+    <div class="stat" ${sc("moore")}><b>${nq}</b><span>سؤالًا (علل + صح/خطأ + اختيار)</span></div>
+    <div class="stat" ${sc("social")}><b>${CMP.length}</b><span>مقارنات</span></div>
+    <div class="stat" ${sc("intro")}><b>${best == null ? "—" : best + "%"}</b><span>أفضل نتيجة في الامتحان</span></div>
+  </div>
+  <div class="tiles">
+    ${tile("study", "ابدأ المذاكرة", "شرح الدرس وحدة وحدة", "book", "var(--primary)", true)}
+    ${tile("glossary", "المصطلحات", `قاموس فيه ${TERMS.length} مصطلحًا وبحث ومفضلة`, "type", "var(--c-social)")}
+    ${tile("questions", "الأسئلة", "علل، صح أم خطأ، اختر الإجابة", "help", "var(--c-moore)")}
+    ${tile("compare", "المقارنات", "جداول مقارنة واضحة", "scale", "var(--c-stages)")}
+    ${tile("quiz", "اختبر نفسك", "اختبار عشوائي بنتيجة فورية", "target", "var(--good)")}
+    ${tile("review", "المراجعة النهائية", "مراجعة سريعة ومصطلحات وأهم الأسئلة", "clip", "var(--c-intro)")}
+  </div>
+  <button class="tile" data-go="exam" style="--sc:var(--bad)"><span class="tile-ic">${ic("clock", 24)}</span><span><b>الامتحان الشامل</b><small>يحاكي الامتحان الحقيقي، وتظهر النتيجة وتحليل نقاط الضعف في النهاية</small></span></button>`;
+}
+
+/* ===================== المذاكرة ===================== */
+function vStudy() {
+  const p = progress();
+  const item = u => `<button class="mapitem ${ST.studied[u.id] ? "done" : ""}" data-go="study/${u.id}" ${sc(u.sec)}><span class="mi-ck">${ST.studied[u.id] ? ic("check", 15) : ""}</span><span><b>${esc(u.title)}</b><small>${esc(u.sub)}</small></span>${ic("chevL", 18)}</button>`;
+  const grp = (s, t, list) => `<section class="mapgroup" ${sc(s)}><h3>${t}</h3>${list}</section>`;
+  const tl = `<ol class="tl">${STAGES.map(s => { const u = "st" + s.n; return `<li class="${ST.studied[u] ? "done" : ""}"><span class="dot">${ST.studied[u] ? ic("check", 16) : s.n}</span><div class="tl-card"><button class="tl-main" data-go="study/${u}"><small>${esc(s.years)}</small><b>${esc(s.title)}</b></button><div class="chips">${s.terms.map(id => `<button class="chip term" data-act="term" data-id="${id}">${esc(TERM[id].en)}</button>`).join("")}</div></div></li>`; }).join("")}</ol>`;
+  return `<div class="page-h"><h2>خريطة الدرس</h2><p class="muted">اضغط على أي وحدة لتبدأ. علّم كل وحدة بـ «تمت المذاكرة» وسيزيد إنجازك (${p.done} من ${p.total}).</p><div class="progress" style="margin-top:8px"><i style="width:${p.pct}%"></i></div></div>
+  ${grp("intro", "1. مقدمة الدرس", item(UNITS[0]))}
+  ${grp("stages", "2. المراحل التاريخية الخمس (خط زمني)", tl)}
+  ${grp("moore", "3. قانون مور", UNITS.filter(u => u.sec === "moore").map(item).join(""))}
+  ${grp("social", "4. التغيرات الاجتماعية والاقتصادية", item(UNITS.find(u => u.id === "social")))}`;
+}
+function termCard(id, opts = {}) {
+  const t = TERM[id]; if (!t) return "";
+  return `<article class="tcard" ${sc(t.sec)}><header><h4>${esc(t.ar)}</h4><span class="en">${esc(t.en)}</span>${t.ab ? `<span class="badge en">${esc(t.ab)}</span>` : ""}<button class="fav ${ST.favs[id] ? "on" : ""}" data-act="fav" data-id="${id}" aria-label="المفضلة" style="margin-inline-start:auto">${ic("heart", 20)}</button></header>
+  <dl><dt>التعريف</dt><dd>${esc(t.def)}</dd><dt>شرح مبسط</dt><dd>${esc(t.simple)}</dd><dt>مثال</dt><dd>${esc(t.ex)}</dd></dl></article>`;
+}
+const keyBox = t => `<div class="key">${ic("bulb", 22)}<div><b>نقطة للحفظ:</b> ${esc(t)}</div></div>`;
+const callout = (t, body, s) => `<div class="callout" ${sc(s || "intro")}><h3>${t}</h3>${body}</div>`;
+function vUnit(id) {
+  const i = UNITS.findIndex(u => u.id === id); if (i < 0) return vStudy();
+  const u = UNITS[i], done = !!ST.studied[id];
+  let body = "";
+  if (id === "intro") body = bIntro(); else if (/^st\d$/.test(id)) body = bStage(+id[2]); else if (id === "moore1") body = bMoore1(); else if (id === "moore2") body = bMoore2(); else if (id === "moore3") body = bMoore3(); else body = bSocial();
+  const last = i === UNITS.length - 1;
+  return `<div class="crumb"><button class="link" data-go="study">${ic("chevR", 18)} خريطة الدرس</button></div>
+  <div class="unit-h" ${sc(u.sec)}><span class="badge sec">${SEC[u.sec]}</span><h2>${esc(u.title)}</h2><p class="muted">${esc(u.sub)} — وحدة ${i + 1} من ${UNITS.length}</p></div>
+  ${body}
+  <div class="unit-nav">
+    <button class="btn" data-go="study/${i > 0 ? UNITS[i - 1].id : ""}" ${i === 0 ? "disabled" : ""}>${ic("chevR", 18)} السابق</button>
+    <button class="btn ${done ? "good" : "primary"}" data-act="studied" data-id="${id}">${done ? ic("check", 18) + " تمت المذاكرة" : "علّم: تمت المذاكرة"}</button>
+    <button class="btn" data-go="${last ? "quiz" : "study/" + UNITS[i + 1].id}">${last ? "اختبر نفسك" : "التالي"} ${ic("chevL", 18)}</button>
+  </div>`;
+}
+function bIntro() {
+  const box = (w, h, t) => `<div style="width:${w}px;height:${h}px">${t}</div>`;
+  return callout("السؤال الرئيسي", "<p>كيف تطورت تقنيات المعلومات عبر الزمن، وكيف غيّرت حياة الناس؟</p>", "intro") +
+    callout("المفهوم المحوري: التغيير", "<p>الدرس كله يدور حول فكرة واحدة: <b>التغيير</b>. تكنولوجيا المعلومات لا تبقى على حالها، بل تتطور باستمرار، وكل مرحلة جديدة تغيّر الأجهزة وتغيّر طريقة حياتنا.</p>", "intro") +
+    `<div class="card"><h3>الفكرة الأساسية</h3><p>تطورت تقنيات المعلومات، وأصبحت الأجهزة <b>أصغر حجمًا</b> و<b>أكثر ترابطًا</b>.</p>
+    <div class="shrink" aria-label="رسم يوضح تصغر الأجهزة">${box(120, 90, "حاسوب ضخم<br>يملأ غرفة")}${box(80, 60, "حاسب<br>شخصي")}${box(36, 60, "هاتف<br>ذكي")}</div>
+    <p class="muted" style="text-align:center;font-size:.88rem">رسم توضيحي للفكرة فقط</p></div>` +
+    `<div class="card"><h3>ماذا سندرس في هذا الدرس؟</h3><ol><li>المراحل التاريخية الخمس لتطور تكنولوجيا المعلومات.</li><li>قانون مور وتحديات تصغير المكونات والحلول الحديثة.</li><li>التغيرات الاجتماعية والاقتصادية: SNS، التجارة الإلكترونية، العمل عن بُعد، التعلم عبر الإنترنت، الدفع غير النقدي.</li></ol></div>` +
+    keyBox("المفهوم المحوري = التغيير، والفكرة الأساسية = أجهزة أصغر وأكثر ترابطًا.");
+}
+function bStage(n) {
+  const s = STAGES[n - 1];
+  const mtl = STAGES.map((x, i) => `<button class="mtl-i ${i + 1 === n ? "on" : ""} ${ST.studied["st" + (i + 1)] ? "done" : ""}" data-go="study/st${i + 1}" aria-label="المرحلة ${i + 1}"><span class="dot">${i + 1}</span><small>${esc(x.short)}</small></button>`).join('<span class="mtl-l"></span>');
+  const rows = [["ماذا حدث؟", s.happened], ["ما التكنولوجيا المستخدمة؟", s.tech], ["كيف كانت الحواسيب؟", s.computers], ["ما استخداماتها؟", s.uses], [s.impactLabel, s.impact]].filter(r => r[1]);
+  return `<div class="mtl" ${sc("stages")}>${mtl}</div>
+  <div class="card" ${sc("stages")}><span class="badge sec">${esc(s.years)}</span><h3 style="margin-top:8px">${esc(s.title)}</h3>
+  <dl class="facts" style="margin-top:12px">${rows.map(r => `<div class="fact"><dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd></div>`).join("")}</dl></div>
+  <h3>مصطلحات هذه المرحلة</h3>${s.terms.map(id => termCard(id)).join("")}${keyBox(s.key)}`;
+}
+function bMoore1() {
+  const vals = [1, 2, 4, 8, 16], labs = ["البداية", "بعد عامين", "بعد 4 أعوام", "بعد 6 أعوام", "بعد 8 أعوام"];
+  return callout("تعريف قانون مور", "<p>ينص قانون مور على أن <b>عدد الترانزستورات في الشريحة يتضاعف تقريبًا كل عامين</b>.</p><p>الترانزستور مكوّن صغير جدًا داخل المعالج. كلما زاد عدد الترانزستورات زادت قدرة الحاسب.</p>", "moore") +
+    `<div class="card"><h3>معنى «التضاعف كل عامين»</h3><p>يعني أنه بعد عامين تقريبًا يصبح العدد ضعف ما كان، ثم بعد عامين آخرين يصبح ضعف الضعف، وهكذا.</p>
+    <div class="bars" role="img" aria-label="أعمدة تتضاعف ارتفاعاتها">${vals.map((v, i) => `<div class="bcol"><b>×${v}</b><div class="bar" style="height:${v * 9 + 8}px"></div><small>${labs[i]}</small></div>`).join("")}</div>
+    <p class="muted" style="font-size:.88rem;margin-top:8px">رسم توضيحي لفكرة التضاعف فقط، وليس أرقامًا حقيقية.</p></div>` +
+    callout("لماذا كان قانون مور مهمًا؟", "<p>لأنه يوضح سرعة تطور الحواسيب: مع زيادة عدد الترانزستورات تصبح الأجهزة <b>أقوى وأصغر</b> مع مرور الوقت.</p>", "moore") +
+    `<div class="card"><h3>ليس قانونًا فيزيائيًا ثابتًا</h3><div class="vs"><div class="no"><b>ليس:</b><p>قانونًا فيزيائيًا ثابتًا لا يتغير.</p></div><div class="yes"><b>بل هو:</b><p>ملاحظة تجريبية (Empirical Observation) لُوحظت من التطور الفعلي، ولا تضمن الاستمرار دائمًا.</p></div></div></div>
+    <h3>مصطلحات الوحدة</h3>${["moore", "transistor", "empirical"].map(id => termCard(id)).join("")}` + keyBox("يتضاعف عدد الترانزستورات تقريبًا كل عامين، وهو ملاحظة تجريبية وليس قانونًا فيزيائيًا ثابتًا.");
+}
+function bMoore2() {
+  return `<div class="card"><h3>لماذا تظهر التحديات؟</h3><p>لكي نزيد عدد الترانزستورات في الشريحة نحتاج إلى <b>تصغير المكونات</b>. وعندما تصبح المكونات صغيرة جدًا تظهر مشكلات:</p>
+  <div class="flow"><span class="node">تصغير المكونات</span><span class="arr">${ic("chevL", 18)}</span><span class="node bad">Leakage Currents</span><span class="node bad">Quantum Effects</span><span class="node bad">Quantum Tunneling</span><span class="arr">${ic("chevL", 18)}</span><span class="node">صعوبة الاستمرار في التصغير</span></div></div>` +
+    ["leak", "qeff", "qtun"].map(id => termCard(id)).join("") +
+    callout("الخلاصة", "<p>لا يمكن تصغير الترانزستورات إلى ما لا نهاية، لأن التسرب والتأثيرات الكمية والنفق الكمي تصعّب ذلك. لهذا ظهرت حلول أخرى لتحسين الأداء (الوحدة التالية).</p>", "moore") +
+    keyBox("التحديات الثلاثة: Leakage Currents، Quantum Effects، Quantum Tunneling.");
+}
+function bMoore3() {
+  return `<p>عندما صعُب الاعتماد على التصغير وحده، ظهرت حلول حديثة لتحسين الأداء:</p>` +
+    ["multicore", "parallel", "special", "qcomp"].map(id => termCard(id)).join("") +
+    `<div class="warn"><b>انتبه:</b> الحوسبة الكمومية <b>ليست بديلًا عامًا</b> لكل الحواسيب التقليدية، وإنما قد تفيد في <b>فئات محددة من المسائل</b>.</div>` +
+    keyBox("Multi-core = أكثر من نواة، Parallel Processing = تنفيذ الأجزاء في وقت واحد، ثم التصميمات المتخصصة، ثم Quantum Computing لفئات محددة من المسائل.");
+}
+function bSocial() {
+  const ids = ["sns", "ecom", "remote", "online", "cashless"];
+  return `<div class="row sb" style="margin-bottom:10px"><p class="muted" style="margin:0">اضغط على كل بطاقة لتفتحها.</p><button class="btn sm" data-act="scAll">فتح / إغلاق الكل</button></div>` +
+    ids.map(id => { const t = TERM[id]; return `<article class="scard"><button class="sc-h" data-act="sc" aria-expanded="false"><span class="t"><b>${esc(t.ar)}</b><small>${esc(t.en)}${t.ab ? " — " + esc(t.ab) : ""}</small></span>${ic("down", 20).replace('class="ic"', 'class="ic chev"')}</button>
+    <div class="sc-b"><dl><dt>المصطلح بالعربي</dt><dd>${esc(t.ar)}</dd><dt>المصطلح بالإنجليزي</dt><dd style="direction:ltr;text-align:right">${esc(t.en)}</dd>${t.ab ? `<dt>الاختصار</dt><dd style="direction:ltr;text-align:right">${esc(t.ab)}</dd>` : ""}<dt>تعريف بسيط</dt><dd>${esc(t.def)}</dd><dt>مثال</dt><dd>${esc(t.ex)}</dd><dt>تأثيره على المجتمع أو الاقتصاد</dt><dd>${esc(t.impact)}</dd></dl>
+    <button class="btn sm" data-act="term" data-id="${id}" style="margin-top:6px">افتح في القاموس</button></div></article>`; }).join("") +
+    keyBox("خمسة تغيرات: SNS، E-commerce، Remote Work، Online Learning، Cashless Payment.");
+}
+
+/* ===================== قاموس المصطلحات ===================== */
+const G = { q: "", sec: "all" };
+function vGlossary() {
+  const chips = [["all", "الكل"], ["intro", SEC.intro], ["stages", SEC.stages], ["moore", SEC.moore], ["social", SEC.social], ["fav", "المفضلة"]];
+  return `<div class="page-h"><h2>قاموس مصطلحات الدرس</h2><p class="muted" id="gcount"></p></div>
+  <div class="toolbar"><label class="searchbox">${ic("search", 18)}<input type="search" data-input="gsearch" placeholder="ابحث بالعربي أو الإنجليزي..." value="${esc(G.q)}" aria-label="بحث في المصطلحات"></label></div>
+  <div class="chips" id="gchips">${chips.map(c => `<button class="chip ${G.sec === c[0] ? "on" : ""}" data-act="gsec" data-v="${c[0]}">${c[1]}</button>`).join("")}</div>
+  <div class="gcards" id="glist"></div>`;
+}
+function glFiltered() {
+  const q = norm(G.q.trim());
+  return TERMS.filter(t => (G.sec === "all" || (G.sec === "fav" ? ST.favs[t.id] : t.sec === G.sec)) && (!q || norm([t.ar, t.en, t.ab, t.def, t.simple, t.key].join(" ")).includes(q)));
+}
+const gCard = t => `<div class="gcard" ${sc(t.sec)} data-act="term" data-id="${t.id}" role="button" tabindex="0"><b>${esc(t.ar)}</b><span class="en">${esc(t.en)}</span>${t.ab ? `<span class="ab">${esc(t.ab)}</span>` : ""}<button class="fav ${ST.favs[t.id] ? "on" : ""}" data-act="fav" data-id="${t.id}" aria-label="أضف إلى المفضلة">${ic("heart", 18)}</button></div>`;
+function glList() {
+  const l = glFiltered();
+  $("#glist").innerHTML = l.length ? l.map(gCard).join("") : `<div class="empty" style="grid-column:1/-1">${G.sec === "fav" && !G.q ? "لم تضف أي مصطلح إلى المفضلة بعد. اضغط على القلب في أي مصطلح." : "لا توجد مصطلحات مطابقة. جرّب كلمة أخرى."}</div>`;
+  $("#gcount").textContent = `${l.length} من ${TERMS.length} مصطلحًا`;
+}
+function termModal(id) {
+  const t = TERM[id]; if (!t) return;
+  const list = (cur === "glossary" ? glFiltered() : TERMS).map(x => x.id);
+  const i = list.indexOf(id);
+  openModal(`<div class="mdl-h" ${sc(t.sec)}><div><h3>${esc(t.ar)}</h3><div class="en">${esc(t.en)}</div><div class="row" style="margin-top:6px"><span class="badge sec">${SEC[t.sec]}</span>${t.ab ? `<span class="badge en">الاختصار: ${esc(t.ab)}</span>` : ""}</div></div>
+  <button class="fav ${ST.favs[id] ? "on" : ""}" data-act="fav" data-id="${id}" aria-label="المفضلة">${ic("heart", 22)}</button><button class="fav" data-act="closeModal" aria-label="إغلاق">${ic("x", 22)}</button></div>
+  <dl ${sc(t.sec)}><dt>المصطلح</dt><dd>${esc(t.ar)}</dd><dt>English Term</dt><dd style="direction:ltr;text-align:right">${esc(t.en)}</dd><dt>الاختصار</dt><dd style="direction:ltr;text-align:right">${t.ab ? esc(t.ab) : "لا يوجد"}</dd>
+  <dt>التعريف</dt><dd>${esc(t.def)}</dd><dt>شرح مبسط جدًا</dt><dd>${esc(t.simple)}</dd><dt>مثال</dt><dd>${esc(t.ex)}</dd>${t.impact ? `<dt>تأثيره</dt><dd>${esc(t.impact)}</dd>` : ""}</dl>
+  <div class="key">${ic("bulb", 22)}<div><b>أهم نقطة يجب حفظها:</b> ${esc(t.key)}</div></div>
+  <div class="mdl-f"><button class="btn sm" data-act="modnav" data-id="${i > 0 ? list[i - 1] : ""}" ${i <= 0 ? "disabled" : ""}>${ic("chevR", 16)} السابق</button><button class="btn sm" data-go="study/${t.unit}">اذهب لشرحه في الدرس</button><button class="btn sm" data-act="modnav" data-id="${i >= 0 && i < list.length - 1 ? list[i + 1] : ""}" ${i < 0 || i >= list.length - 1 ? "disabled" : ""}>التالي ${ic("chevL", 16)}</button></div>`);
+}
+function openModal(html) { const m = $("#modal"); m.innerHTML = `<div class="ovl" data-act="ovl"><div class="mdl" role="dialog" aria-modal="true" tabindex="-1">${html}</div></div>`; document.body.classList.add("noscroll"); const d = m.querySelector(".mdl"); if (d) d.focus(); }
+function closeModal() { const m = $("#modal"); if (m) m.innerHTML = ""; document.body.classList.remove("noscroll"); }
+
+/* ===================== الأسئلة ===================== */
+const QS = {}; let showAll = false; const QV = { tab: "illa", q: "" };
+const qst = id => QS[id] || (QS[id] = { picked: null, rev: false });
+const qvis = id => showAll || qst(id).rev;
+const yn = ok => ok ? `${ic("check", 16)} صح` : `${ic("x", 16)} خطأ`;
+function vQuestions(tab) {
+  if (!["illa", "tf", "mcq"].includes(tab)) tab = "illa";
+  QV.tab = tab; QV.q = "";
+  const tabs = [["illa", `علل (${ILLA.length})`], ["tf", `صح أم خطأ (${TF.length})`], ["mcq", `اختر الإجابة (${MCQ.length})`]];
+  return `<div class="page-h"><h2>الأسئلة</h2><p class="muted">أجب عن السؤال في ذهنك ثم اضغط «إظهار الإجابة».</p></div>
+  <div class="tabs2">${tabs.map(t => `<button class="chip ${tab === t[0] ? "on" : ""}" data-go="questions/${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div class="toolbar"><label class="searchbox">${ic("search", 18)}<input type="search" data-input="qsearch" placeholder="ابحث في الأسئلة..." aria-label="بحث في الأسئلة"></label>
+  <button class="btn sm" data-act="toggleAll">${showAll ? "إخفاء كل الإجابات" : "إظهار كل الإجابات"}</button><button class="btn sm ghost" data-act="resetQ">${ic("redo", 15)} إعادة ضبط</button></div>
+  <div id="qlist"></div>`;
+}
+function illaCard(x) {
+  const v = qvis(x.id);
+  return `<article class="qcard" ${sc(x.s)}><span class="qn">${x.n}</span><div class="qb"><p class="q">${ic("help", 18)} علل: ${esc(x.q)}</p>${v ? `<div class="ans"><b>الإجابة النموذجية:</b> ${esc(x.a)}</div>` : ""}${showAll ? "" : `<button class="btn sm ghost" style="margin-top:8px" data-act="rev" data-id="${x.id}">${v ? "إخفاء الإجابة" : "إظهار الإجابة"}</button>`}</div></article>`;
+}
+function tfCard(x) {
+  const s = qst(x.id), v = qvis(x.id), cor = x.a ? "T" : "F";
+  const btn = (k, l) => { let c = ""; if (v) { if (k === cor) c = "correct"; else if (s.picked === k) c = "wrong"; } else if (s.picked === k) c = "sel"; return `<button class="opt ${c}" data-act="tfpick" data-id="${x.id}" data-v="${k}">${l}</button>`; };
+  const ok = s.picked === cor;
+  return `<article class="qcard" ${sc(x.s)}><span class="qn">${x.n}</span><div class="qb"><p class="q">${esc(x.q)}</p><div class="opts two">${btn("T", "صح")}${btn("F", "خطأ")}</div>
+  ${v ? `<div class="ans ${s.picked ? (ok ? "ok" : "no") : ""}">${s.picked ? `<p class="verdict">${ok ? "إجابتك صحيحة" : "إجابتك غير صحيحة"}</p>` : ""}<p><b>الإجابة الصحيحة:</b> ${yn(x.a)}</p>${x.a ? "" : `<p><b>التصحيح:</b> ${esc(x.c)}</p>`}<p><b>شرح:</b> ${esc(x.e)}</p></div>` : ""}
+  ${showAll ? "" : `<button class="btn sm ghost" style="margin-top:8px" data-act="rev" data-id="${x.id}">${v ? "إخفاء الإجابة" : "إظهار الإجابة"}</button>`}</div></article>`;
+}
+function mcqCard(x) {
+  const s = qst(x.id), v = qvis(x.id);
+  const opts = x.options.map((t, k) => { let c = ""; if (v) { if (k === x.ans) c = "correct"; else if (s.picked === k) c = "wrong"; } else if (s.picked === k) c = "sel"; return `<button class="opt ${c}" data-act="mcqpick" data-id="${x.id}" data-k="${k}"><span class="ol">${LET[k]}</span><span>${esc(t)}</span>${c === "correct" ? ic("check", 18) : c === "wrong" ? ic("x", 18) : ""}</button>`; }).join("");
+  const ok = s.picked === x.ans;
+  return `<article class="qcard" ${sc(x.s)}><span class="qn">${x.n}</span><div class="qb"><p class="q">${esc(x.q)}</p><div class="opts">${opts}</div>
+  ${v ? `<div class="ans ${s.picked != null ? (ok ? "ok" : "no") : ""}">${s.picked != null ? `<p class="verdict">${ok ? "إجابتك صحيحة" : "إجابتك غير صحيحة"}</p>` : ""}<p><b>الإجابة الصحيحة:</b> ${esc(LET[x.ans])} — ${esc(x.options[x.ans])}</p><p><b>تفسير:</b> ${esc(x.e)}</p></div>` : ""}
+  ${showAll ? "" : `<button class="btn sm ghost" style="margin-top:8px" data-act="rev" data-id="${x.id}">${v ? "إخفاء الإجابة" : "إظهار الإجابة"}</button>`}</div></article>`;
+}
+function qList() {
+  const q = norm(QV.q.trim());
+  const src = QV.tab === "illa" ? ILLA_V : QV.tab === "tf" ? TF_V : MCQ_V;
+  const f = src.filter(x => !q || norm([x.q, x.a, x.c, x.e, x.options ? x.options.join(" ") : ""].join(" ")).includes(q));
+  const card = QV.tab === "illa" ? illaCard : QV.tab === "tf" ? tfCard : mcqCard;
+  $("#qlist").innerHTML = f.length ? f.map(card).join("") : `<div class="empty">لا توجد أسئلة مطابقة للبحث.</div>`;
+}
+
+/* ===================== المقارنات ===================== */
+let blurOn = false;
+function cmpTable(c) {
+  return `<div class="tbl-wrap ${blurOn ? "blur" : ""}"><table class="cmp"><thead><tr><th>وجه المقارنة</th><th>${esc(c.a)}</th><th>${esc(c.b)}</th></tr></thead><tbody>${c.rows.map(r => `<tr><th scope="row">${esc(r[0])}</th><td class="v" data-act="unblur"><span class="cell">${esc(r[1])}</span></td><td class="v" data-act="unblur"><span class="cell">${esc(r[2])}</span></td></tr>`).join("")}</tbody></table></div>`;
+}
+function vCompare() {
+  return `<div class="page-h"><h2>المقارنات</h2><p class="muted">كل المقارنات مبنية على محتوى الدرس.</p></div>
+  <div class="toolbar"><button class="btn sm ${blurOn ? "primary" : ""}" data-act="blurToggle">${ic("eye", 16)} ${blurOn ? "إيقاف وضع التغطية" : "وضع التغطية (للحفظ)"}</button><span class="muted" style="font-size:.88rem">في وضع التغطية اضغط على أي خلية لتظهر.</span></div>
+  <div class="chips">${CMP.map((c, i) => `<button class="chip" data-act="cmpjump" data-id="${c.id}">${i + 1}. ${esc(c.a)} × ${esc(c.b)}</button>`).join("")}</div>
+  ${CMP.map((c, i) => `<div class="cmp-h" id="${c.id}" ${sc(c.s)}><h3>${i + 1}. ${esc(c.a)} × ${esc(c.b)}</h3><span class="badge sec">${SEC[c.s]}</span></div>${cmpTable(c)}`).join("")}
+  <div class="cmp-h" ${sc("stages")}><h3>ملخص المراحل الخمس بنظرة سريعة</h3></div>
+  <div class="tbl-wrap"><table class="cmp"><thead><tr><th>المرحلة</th><th>الفترة</th><th>أهم المصطلحات</th><th>أهم تأثير</th></tr></thead><tbody>${STAGES.map(s => `<tr><th scope="row">${s.n}. ${esc(s.title)}</th><td>${esc(s.years)}</td><td style="direction:ltr;text-align:right">${s.terms.map(id => esc(TERM[id].en)).join("، ")}</td><td>${esc(s.impact)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ===================== الاختبارات ===================== */
+const SESS = { quiz: null, exam: null }; const QCFG = { type: "mixed", n: 10 };
+const tfQ = t => ({ id: t.id, type: "tf", s: t.s, q: t.q, options: ["صح", "خطأ"], ans: t.a ? 0 : 1, exp: (t.a ? "" : "التصحيح: " + t.c + " — ") + t.e });
+function termQ(t) {
+  const others = pick(TERMS.filter(x => x.id !== t.id), 3), opts = shuffle([t].concat(others));
+  if (Math.random() < .5) return { id: "tm" + t.id, type: "term", s: t.sec, q: `أي مصطلح يطابق هذا التعريف؟ «${t.def}»`, options: opts.map(x => x.ar + " — " + x.en), ans: opts.indexOf(t), exp: `${t.ar} (${t.en}): ${t.def}` };
+  return { id: "tm" + t.id, type: "term", s: t.sec, q: `ما المعنى العربي للمصطلح «${t.en}»؟`, options: opts.map(x => x.ar), ans: opts.indexOf(t), exp: `${t.en} = ${t.ar}. ${t.def}` };
+}
+function illaQ(x) {
+  let others = ILLA_V.filter(o => o.id !== x.id && o.s !== x.s); if (others.length < 3) others = ILLA_V.filter(o => o.id !== x.id);
+  const opts = shuffle([x.a].concat(pick(others, 3).map(o => o.a)));
+  return { id: "il" + x.id, type: "illa", s: x.s, q: "علل: " + x.q, options: opts, ans: opts.indexOf(x.a), exp: "الإجابة النموذجية: " + x.a };
+}
+function cmpQs(n) {
+  const rows = []; CMP.forEach(c => c.rows.forEach(r => { if (r[3] !== "x" && r[1] !== r[2]) rows.push({ c, r }); }));
+  return pick(rows, n).map(({ c, r }, i) => {
+    const side = Math.random() < .5 ? 1 : 2, name = side === 1 ? c.a : c.b, right = r[side], other = r[side === 1 ? 2 : 1];
+    const pool = Array.from(new Set(rows.filter(o => o.c !== c).flatMap(o => [o.r[1], o.r[2]]).filter(v => v !== right && v !== other)));
+    const opts = shuffle([right, other].concat(pick(pool, 2)));
+    return { id: "cm" + c.id + "-" + i, type: "cmp", s: c.s, q: `في المقارنة بين «${c.a}» و«${c.b}» — من حيث «${r[0]}»: أي مما يلي يصف «${name}»؟`, options: opts, ans: opts.indexOf(right), exp: `«${c.a}»: ${r[1]} — «${c.b}»: ${r[2]}` };
+  });
+}
+function poolQ(type, n) {
+  switch (type) {
+    case "mcq": return pick(MCQ_R, n).map(mcqQ);
+    case "tf": return pick(TF_V, n).map(tfQ);
+    case "term": return pick(TERMS, n).map(termQ);
+    case "illa": return pick(ILLA_V, n).map(illaQ);
+    case "cmp": return cmpQs(n);
+  }
+  return [];
+}
+function buildQs(kind) {
+  if (kind === "exam") return [].concat(poolQ("mcq", 8), poolQ("tf", 5), poolQ("term", 4), poolQ("illa", 4), poolQ("cmp", 4));
+  if (QCFG.type !== "mixed") return poolQ(QCFG.type, QCFG.n);
+  const w = [["mcq", .35], ["tf", .25], ["term", .15], ["illa", .15], ["cmp", .10]];
+  const cnt = w.map(x => Math.floor(QCFG.n * x[1])); let rem = QCFG.n - cnt.reduce((a, b) => a + b, 0); for (let i = 0; rem > 0; i = (i + 1) % cnt.length, rem--) cnt[i]++;
+  return shuffle([].concat(...w.map((x, i) => poolQ(x[0], cnt[i]))));
+}
+function startSession(kind, qs, cfg) { SESS[kind] = { kind, cfg: cfg || {}, qs, i: 0, ans: qs.map(() => null), done: false, t0: Date.now(), t1: null }; }
+function vQuiz(kind) {
+  const s = SESS[kind];
+  if (!s) return qSetup(kind);
+  return s.done ? qResult(s) : qScreen(s);
+}
+function qSetup(kind) {
+  const best = ST.best[kind];
+  if (kind === "exam") return `<div class="page-h"><h2>الامتحان الشامل</h2><p class="muted">اختبار يحاكي الامتحان: لا تظهر الإجابات إلا بعد الانتهاء.</p></div>
+  <div class="card setup"><h3>مكوّنات الامتحان (25 سؤالًا)</h3><div class="chips"><span class="badge">8 اختيار من متعدد</span><span class="badge">5 صح وخطأ</span><span class="badge">4 مصطلحات</span><span class="badge">4 علل</span><span class="badge">4 مقارنات</span></div>
+  <p>في النهاية ستحصل على: الدرجة، النسبة المئوية، الأسئلة الصحيحة والخاطئة مع الإجابة الصحيحة والشرح، وتحديد نقاط الضعف. الأسئلة تُسحب عشوائيًا في كل مرة.</p>
+  ${best != null ? `<p><b>أفضل نتيجة لك:</b> ${best}%</p>` : ""}<button class="btn primary big" data-act="qstart" data-kind="exam">ابدأ الامتحان</button></div>`;
+  const tps = [["mixed", "مختلط"], ["mcq", TYPES.mcq], ["tf", TYPES.tf], ["term", TYPES.term], ["illa", TYPES.illa], ["cmp", TYPES.cmp]];
+  return `<div class="page-h"><h2>اختبر نفسك</h2><p class="muted">اختبار عشوائي سريع: تظهر نتيجة كل سؤال فورًا مع الشرح.</p></div>
+  <div class="card setup"><h3>نوع الأسئلة</h3><div class="chips">${tps.map(t => `<button class="chip ${QCFG.type === t[0] ? "on" : ""}" data-act="qtype" data-v="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <h3>عدد الأسئلة</h3><div class="chips">${[5, 10, 15, 20].map(n => `<button class="chip ${QCFG.n === n ? "on" : ""}" data-act="qn" data-v="${n}">${n}</button>`).join("")}</div>
+  ${best != null ? `<p class="muted">أفضل نتيجة لك في الاختبارات السريعة: ${best}%</p>` : ""}
+  <button class="btn primary big" data-act="qstart" data-kind="quiz">${ic("shuffle", 18)} ابدأ الاختبار العشوائي</button></div>`;
+}
+function qScreen(s) {
+  const q = s.qs[s.i], a = s.ans[s.i], instant = s.kind === "quiz", locked = instant && a !== null, N = s.qs.length;
+  const opts = q.options.map((t, k) => {
+    let c = ""; if (locked) { if (k === q.ans) c = "correct"; else if (k === a) c = "wrong"; } else if (a === k) c = "sel";
+    return `<button class="opt ${c}" data-act="qans" data-k="${k}" ${locked ? "disabled" : ""}>${q.type === "tf" ? "" : `<span class="ol">${LET[k]}</span>`}<span>${esc(t)}</span>${c === "correct" ? ic("check", 18) : c === "wrong" ? ic("x", 18) : ""}</button>`;
+  }).join("");
+  const fb = locked ? `<div class="fb ${a === q.ans ? "ok" : "no"}"><b>${a === q.ans ? "إجابة صحيحة" : "إجابة غير صحيحة"}</b><p>${esc(q.exp)}</p></div>` : "";
+  const isLast = s.i === N - 1;
+  const nav = instant ? `<div class="unit-nav"><button class="btn" data-act="qend">إنهاء الآن</button><button class="btn primary" data-act="qnext" ${locked ? "" : "disabled"}>${isLast ? "عرض النتيجة" : "السؤال التالي"} ${ic("chevL", 18)}</button></div>`
+    : `<div class="unit-nav"><button class="btn" data-act="qprev" ${s.i === 0 ? "disabled" : ""}>${ic("chevR", 18)} السابق</button><button class="btn primary" data-act="qend">إنهاء الامتحان</button><button class="btn" data-act="qnext" ${isLast ? "disabled" : ""}>التالي ${ic("chevL", 18)}</button></div>
+    <div class="qdots">${s.qs.map((_, k) => `<button class="qdot ${s.ans[k] !== null ? "dn" : ""} ${k === s.i ? "cur" : ""}" data-act="qjump" data-k="${k}" aria-label="السؤال ${k + 1}">${k + 1}</button>`).join("")}</div>`;
+  return `<div class="qz-h"><b>${s.kind === "exam" ? "الامتحان الشامل" : "اختبر نفسك"} — السؤال ${s.i + 1} من ${N}</b><span class="row"><span class="badge">${TYPES[q.type]}</span><span class="badge sec" ${sc(q.s)}>${SEC[q.s]}</span></span></div>
+  <div class="progress"><i style="width:${Math.round((s.i + (locked ? 1 : 0)) / N * 100)}%"></i></div>
+  <div class="card" style="margin-top:14px"><div class="qtxt">${esc(q.q)}</div><div class="opts ${q.type === "tf" ? "two" : ""}">${opts}</div>${fb}</div>${nav}`;
+}
+function calcRes(s) {
+  const items = s.qs.map((q, i) => ({ q, i, a: s.ans[i], ok: s.ans[i] === q.ans }));
+  const correct = items.filter(x => x.ok).length, N = items.length, pct = N ? Math.round(correct / N * 100) : 0;
+  const by = key => { const m = {}; items.forEach(x => { const k = x.q[key]; (m[k] = m[k] || { c: 0, t: 0 }).t++; if (x.ok) m[k].c++; }); return m; };
+  return { items, correct, wrong: N - correct, N, pct, bySec: by("s"), byType: by("type") };
+}
+function finish(kind) {
+  const s = SESS[kind]; s.done = true; s.t1 = Date.now();
+  const r = calcRes(s);
+  if (!s.cfg.retry) { if (ST.best[kind] == null || r.pct > ST.best[kind]) ST.best[kind] = r.pct; }
+  ST.history.push({ kind, pct: r.pct, at: Date.now() }); ST.history = ST.history.slice(-30); save();
+  route(kind, false);
+}
+function qResult(s) {
+  const r = calcRes(s), C = 2 * Math.PI * 52, mins = Math.max(1, Math.round((s.t1 - s.t0) / 60000));
+  const msg = r.pct >= 90 ? "ممتاز! مستواك عالٍ جدًا." : r.pct >= 75 ? "جيد جدًا، راجع الأخطاء القليلة." : r.pct >= 60 ? "جيد، لكنك تحتاج إلى مراجعة بعض النقاط." : "تحتاج إلى مراجعة الدرس من جديد ثم إعادة الاختبار.";
+  const link = { intro: "study/intro", stages: "study", moore: "study/moore1", social: "study/social" };
+  const weakRows = Object.keys(r.bySec).map(k => { const v = r.bySec[k], p = Math.round(v.c / v.t * 100), weak = p < 70; return `<div class="weak"><b>${SEC[k]}</b><div class="progress ${weak ? "bad" : "good"}"><i style="width:${p}%"></i></div><span class="row"><span>${v.c} من ${v.t}</span><span class="st ${weak ? "b" : "g"}">${weak ? "نقطة ضعف" : "جيد"}</span>${weak ? `<button class="link" data-go="${link[k]}">راجع</button>` : ""}</span></div>`; }).join("");
+  const typeRows = Object.keys(r.byType).map(k => { const v = r.byType[k], p = Math.round(v.c / v.t * 100); return `<div class="weak"><b>${TYPES[k]}</b><div class="progress ${p < 70 ? "bad" : "good"}"><i style="width:${p}%"></i></div><span>${v.c} من ${v.t}</span></div>`; }).join("");
+  const anyWeak = Object.values(r.bySec).some(v => v.c / v.t < .7);
+  const show = (x, ok) => `<div class="rq ${ok ? "ok" : "no"}"><span class="badge">${TYPES[x.q.type]}</span> <span class="badge sec" ${sc(x.q.s)}>${SEC[x.q.s]}</span><p class="q">${x.i + 1}. ${esc(x.q.q)}</p>${ok ? "" : `<p class="yours">${ic("x", 15)} إجابتك: ${x.a === null ? "لم تُجب" : esc(x.q.options[x.a])}</p>`}<p class="right">${ic("check", 15)} الإجابة الصحيحة: ${esc(x.q.options[x.q.ans])}</p><p class="muted">الشرح: ${esc(x.q.exp)}</p></div>`;
+  const wrong = r.items.filter(x => !x.ok), right = r.items.filter(x => x.ok);
+  return `<div class="page-h"><h2>نتيجة ${s.kind === "exam" ? "الامتحان الشامل" : "الاختبار"}</h2></div>
+  <div class="card"><div class="res-top"><svg class="ring" viewBox="0 0 120 120" role="img" aria-label="${r.pct}%"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle class="ring-fg" cx="60" cy="60" r="52" stroke-dasharray="${(r.pct / 100 * C).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 60 60)"/><text x="60" y="69" text-anchor="middle">${r.pct}%</text></svg>
+  <div><h3>الدرجة: ${r.correct} من ${r.N}</h3><p>${msg}</p><div class="rstats"><span class="rstat">النسبة: ${r.pct}%</span><span class="rstat g">صحيحة: ${r.correct}</span><span class="rstat b">خاطئة: ${r.wrong}</span><span class="rstat">المدة: ${mins} د</span></div></div></div></div>
+  <div class="card"><h3>تحديد نقاط الضعف</h3>${anyWeak ? "<p>الأقسام التي نسبتها أقل من 70% تحتاج إلى مراجعة:</p>" : "<p>لا توجد نقاط ضعف واضحة في الأقسام. أحسنت!</p>"}${weakRows}<h4 style="margin-top:12px">حسب نوع السؤال</h4>${typeRows}</div>
+  <div class="row" style="margin-bottom:16px"><button class="btn primary" data-act="qretake">${ic("redo", 16)} إعادة الاختبار</button>${wrong.length ? `<button class="btn" data-act="qwrong">أعد الأسئلة الخاطئة فقط (${wrong.length})</button>` : ""}<button class="btn" data-act="qreset">${s.kind === "quiz" ? "تغيير الإعدادات" : "الخروج"}</button></div>
+  <h3>الأسئلة الخاطئة (${wrong.length})</h3>${wrong.length ? wrong.map(x => show(x, false)).join("") : `<div class="empty">لا توجد أسئلة خاطئة.</div>`}
+  <details class="grp" style="margin-top:12px"><summary>الأسئلة الصحيحة (${right.length}) — اضغط للعرض</summary>${right.map(x => show(x, true)).join("")}</details>`;
+}
+
+/* ===================== المراجعة النهائية ===================== */
+const FC = { i: 0, flip: false, fav: false };
+function vReview(tab) {
+  if (!["quick", "terms", "expected"].includes(tab)) tab = "quick";
+  const tabs = [["quick", "مراجعة سريعة"], ["terms", "مراجعة المصطلحات"], ["expected", "أهم الأسئلة المتوقعة"]];
+  const head = `<div class="page-h"><h2>المراجعة النهائية</h2></div><div class="tabs2">${tabs.map(t => `<button class="chip ${tab === t[0] ? "on" : ""}" data-go="review/${t[0]}">${t[1]}</button>`).join("")}<button class="chip" data-go="quiz">اختبر نفسك</button><button class="chip" data-go="exam">الامتحان الشامل</button></div>`;
+  if (tab === "quick") return head + QUICK.map(g => `<section class="qr-g" ${sc(g.s)}><h3>${g.t}</h3><ul>${g.pts.map(p => `<li>${esc(p)}</li>`).join("")}</ul></section>`).join("");
+  if (tab === "terms") return head + `<div class="row sb" style="margin-bottom:8px"><button class="btn sm ${FC.fav ? "primary" : ""}" data-act="fcfav">${ic("heart", 15)} المفضلة فقط</button><button class="btn sm" data-act="fcshuf">${ic("shuffle", 15)} ترتيب عشوائي</button></div><div id="fc"></div>
+  <h3 style="margin-top:18px">كل المصطلحات في جدول واحد</h3><div class="tbl-wrap"><table class="cmp"><thead><tr><th>المصطلح</th><th>English</th><th>أهم نقطة</th></tr></thead><tbody>${TERMS.map(t => `<tr><th scope="row">${esc(t.ar)}</th><td style="direction:ltr;text-align:right">${esc(t.en)}${t.ab ? " (" + esc(t.ab) + ")" : ""}</td><td>${esc(t.key)}</td></tr>`).join("")}</tbody></table></div>`;
+  return head + `<p class="muted">أهم أسئلة «علل» المتوقعة في الدرس.</p><div id="qlist"></div>`;
+}
+let fcOrder = TERMS.map(t => t.id);
+const fcList = () => fcOrder.filter(id => !FC.fav || ST.favs[id]);
+function fcRender() {
+  const l = fcList(), box = $("#fc"); if (!box) return;
+  if (!l.length) { box.innerHTML = `<div class="empty">لا توجد مصطلحات في المفضلة بعد.</div>`; return; }
+  if (FC.i >= l.length) FC.i = 0;
+  const t = TERM[l[FC.i]];
+  box.innerHTML = `<div class="fc-c">${FC.i + 1} من ${l.length}</div>` + (FC.flip
+    ? `<button class="flash back" data-act="fcflip" ${sc(t.sec)}><span class="big">${esc(t.ar)}</span><span>${esc(t.def)}</span><span class="key-t">${esc(t.key)}</span><span class="hint">اضغط للرجوع</span></button>`
+    : `<button class="flash" data-act="fcflip" ${sc(t.sec)}><span class="big">${esc(t.ar)}</span><span class="en">${esc(t.en)}${t.ab ? " — " + esc(t.ab) : ""}</span><span class="hint">تذكّر التعريف ثم اضغط لتراه</span></button>`) +
+    `<div class="row sb" style="margin-top:10px"><button class="btn" data-act="fcprev">${ic("chevR", 18)} السابق</button><button class="fav ${ST.favs[t.id] ? "on" : ""}" data-act="fav" data-id="${t.id}" aria-label="المفضلة">${ic("heart", 24)}</button><button class="btn" data-act="fcnext">التالي ${ic("chevL", 18)}</button></div>`;
+}
+
+/* ===================== البحث العام ===================== */
+function vSearch(q) {
+  const nq = norm(q), out = [];
+  const terms = TERMS.filter(t => norm([t.ar, t.en, t.ab, t.def, t.simple, t.ex, t.key].join(" ")).includes(nq));
+  const det = (k, s, q2, a) => `<details class="qd"><summary><span class="badge">${k}</span> ${esc(q2)}</summary><div class="ans">${a}</div></details>`;
+  ILLA_V.forEach(x => { if (norm(x.q + " " + x.a).includes(nq)) out.push(det("علل", x.s, "علل: " + x.q, "<b>الإجابة:</b> " + esc(x.a))); });
+  TF_V.forEach(x => { if (norm(x.q + " " + x.c + " " + x.e).includes(nq)) out.push(det("صح/خطأ", x.s, x.q, `<b>الإجابة:</b> ${x.a ? "صح" : "خطأ"}${x.a ? "" : "<br><b>التصحيح:</b> " + esc(x.c)}<br>${esc(x.e)}`)); });
+  MCQ_V.forEach(x => { if (norm(x.q + " " + x.options.join(" ") + " " + x.e).includes(nq)) out.push(det("اختيار", x.s, x.q, `<b>الإجابة:</b> ${esc(x.options[x.ans])}<br>${esc(x.e)}`)); });
+  return `<div class="page-h"><h2>نتائج البحث عن «${esc(q)}»</h2><p class="muted">${terms.length} مصطلح، ${out.length} سؤال</p></div>
+  <h3>المصطلحات</h3>${terms.length ? `<div class="gcards">${terms.map(gCard).join("")}</div>` : `<div class="empty">لا توجد مصطلحات مطابقة.</div>`}
+  <h3 style="margin-top:18px">الأسئلة</h3>${out.length ? out.slice(0, 40).join("") : `<div class="empty">لا توجد أسئلة مطابقة.</div>`}`;
+}
+
+/* ===================== الأحداث ===================== */
+const POST = {
+  glossary() { refreshCur = glList; glList(); },
+  questions() { refreshCur = qList; qList(); },
+  review(t) { if (t === "terms") { refreshCur = fcRender; fcRender(); } else if (t === "expected") { refreshCur = topList; topList(); } }
+};
+function topList() { $("#qlist").innerHTML = ILLA_V.filter(x => x.top).map(illaCard).join(""); }
+function rerenderList() { if (refreshCur) refreshCur(); }
+function setFav(id) {
+  ST.favs[id] = !ST.favs[id]; save();
+  $$(`[data-act="fav"][data-id="${id}"]`).forEach(b => b.classList.toggle("on", !!ST.favs[id]));
+  toast(ST.favs[id] ? "أُضيف إلى المفضلة" : "أُزيل من المفضلة");
+  if ((cur === "glossary" && G.sec === "fav") || (cur.startsWith("review/terms") && FC.fav)) rerenderList();
+}
+const ACT = {
+  studied(el) { const id = el.dataset.id; ST.studied[id] = !ST.studied[id]; save(); toast(ST.studied[id] ? "أحسنت! تم حفظ تقدمك" : "أُلغيت العلامة"); route(cur, true); },
+  sc(el) { const c = el.closest(".scard"); const o = c.classList.toggle("open"); el.setAttribute("aria-expanded", o); },
+  scAll() { const cs = $$(".scard"), open = cs.some(c => !c.classList.contains("open")); cs.forEach(c => c.classList.toggle("open", open)); },
+  term(el) { termModal(el.dataset.id); },
+  modnav(el) { if (el.dataset.id) termModal(el.dataset.id); },
+  closeModal() { closeModal(); },
+  ovl(el, e) { if (e.target === el) closeModal(); },
+  fav(el) { setFav(el.dataset.id); },
+  gsec(el) { G.sec = el.dataset.v; $$("#gchips .chip").forEach(c => c.classList.toggle("on", c.dataset.v === G.sec)); glList(); },
+  rev(el) { const s = qst(el.dataset.id); s.rev = !s.rev; rerenderList(); },
+  tfpick(el) { const s = qst(el.dataset.id); s.picked = el.dataset.v; s.rev = true; rerenderList(); },
+  mcqpick(el) { const s = qst(el.dataset.id); s.picked = +el.dataset.k; s.rev = true; rerenderList(); },
+  toggleAll(el) { showAll = !showAll; el.textContent = showAll ? "إخفاء كل الإجابات" : "إظهار كل الإجابات"; rerenderList(); },
+  resetQ() { Object.keys(QS).forEach(k => delete QS[k]); showAll = false; const b = $('[data-act="toggleAll"]'); if (b) b.textContent = "إظهار كل الإجابات"; rerenderList(); toast("أُعيد ضبط الإجابات"); },
+  blurToggle() { blurOn = !blurOn; route("compare", true); },
+  unblur(el) { if (blurOn) el.classList.toggle("rv"); },
+  cmpjump(el) { const t = document.getElementById(el.dataset.id); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); },
+  qtype(el) { QCFG.type = el.dataset.v; route("quiz", true); },
+  qn(el) { QCFG.n = +el.dataset.v; route("quiz", true); },
+  qstart(el) { const k = el.dataset.kind; startSession(k, buildQs(k), { type: QCFG.type, n: QCFG.n }); route(k); },
+  qans(el) { const s = SESS[cur]; if (!s || s.done) return; if (s.kind === "quiz" && s.ans[s.i] !== null) return; s.ans[s.i] = +el.dataset.k; route(cur, true); },
+  qnext() { const s = SESS[cur]; if (!s) return; if (s.i < s.qs.length - 1) { s.i++; route(cur); } else if (s.kind === "quiz") finish(cur); },
+  qprev() { const s = SESS[cur]; if (s && s.i > 0) { s.i--; route(cur); } },
+  qjump(el) { const s = SESS[cur]; if (s) { s.i = +el.dataset.k; route(cur); } },
+  qend() {
+    const s = SESS[cur]; if (!s) return; const un = s.ans.filter(a => a === null).length;
+    if (!un) return finish(cur);
+    openModal(`<h3>إنهاء ${s.kind === "exam" ? "الامتحان" : "الاختبار"}؟</h3><p>لم تجب عن <b>${un}</b> سؤالًا. الأسئلة غير المجابة تُحسب خاطئة.</p><div class="mdl-f"><button class="btn" data-act="closeModal">متابعة الحل</button><button class="btn primary" data-act="qfin">إنهاء وعرض النتيجة</button></div>`);
+  },
+  qfin() { closeModal(); finish(cur); },
+  qretake() { const s = SESS[cur]; if (!s) return; if (s.cfg.retry) { startSession(cur, s.qs.map(q => Object.assign({}, q)), s.cfg); } else if (cur === "exam") startSession("exam", buildQs("exam"), {}); else startSession("quiz", buildQs("quiz"), { type: QCFG.type, n: QCFG.n }); route(cur); },
+  qwrong() { const s = SESS[cur]; if (!s) return; const r = calcRes(s); const qs = r.items.filter(x => !x.ok).map(x => Object.assign({}, x.q)); SESS.quiz = null; startSession("quiz", qs, { retry: true }); go("quiz"); },
+  qreset() { SESS[cur] = null; route(cur); },
+  fcflip() { FC.flip = !FC.flip; fcRender(); },
+  fcnext() { FC.flip = false; const l = fcList(); FC.i = (FC.i + 1) % Math.max(1, l.length); fcRender(); },
+  fcprev() { FC.flip = false; const l = fcList(); FC.i = (FC.i - 1 + l.length) % Math.max(1, l.length); fcRender(); },
+  fcshuf() { fcOrder = shuffle(fcOrder); FC.i = 0; FC.flip = false; fcRender(); },
+  fcfav(el) { FC.fav = !FC.fav; FC.i = 0; FC.flip = false; el.classList.toggle("primary", FC.fav); fcRender(); }
+};
+const INP = {
+  gsearch(el) { G.q = el.value; glList(); },
+  qsearch(el) { QV.q = el.value; qList(); },
+  gs(el) { const q = el.value.trim(); if (!q) { if (cur === "search") go("home"); return; } cur = "search"; refreshCur = null; closeModal(); $$(".tab").forEach(t => t.classList.remove("on")); $("#main").innerHTML = vSearch(q); }
+};
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-go],[data-act]"); if (!el) return;
+  if (el.dataset.go !== undefined && el.dataset.act === undefined) { e.preventDefault(); if (el.disabled) return; go(el.dataset.go || "study"); return; }
+  const inner = e.target.closest("[data-act]");
+  const a = ACT[inner.dataset.act]; if (!a) return;
+  if (inner.dataset.act === "term" && e.target.closest('[data-act="fav"]')) return;
+  if (inner.dataset.act === "sc" && e.target.closest('[data-act="fav"]')) return;
+  a(inner, e);
+});
+document.addEventListener("input", e => { const el = e.target.closest("[data-input]"); if (el && INP[el.dataset.input]) INP[el.dataset.input](el); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("gcard")) { e.preventDefault(); termModal(e.target.dataset.id); }
+});
+
+/* ===================== البداية ===================== */
+function init() {
+  $("#tabs").innerHTML = NAV.map(n => `<button class="tab" data-go="${n[0]}">${n[1]}</button>`).join("");
+  route((location.hash || "#home").slice(1) || "home");
+}
+init();
+
+</script>
+</body>
+</html>
